@@ -5,9 +5,13 @@ Authors@R:
     person("Ashley", "Baldry", , "ashley.baldry@ascent.io", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 License: What license is it under?
-Imports: 
+Imports:
+    dtlg,
     ggplot2,
     golem,
+    reactable,
     shiny
+Suggests:
+    devtools
 Encoding: UTF-8
 RoxygenNote: 7.3.3

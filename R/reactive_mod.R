@@ -2,43 +2,41 @@ reactiveTabUI <- function(id) {
   ns <- NS(id)
 
   tagList(
-    verbatimTextOutput(ns("code")),
-    plotOutput(ns("plot"))
+    h3("Extracting Dataset from Reactive"),
+    p("Taking the definition of a dataset from another reactive, and using in the summary calculation."),
+    fluidRow(
+      column(
+        width = 6,
+        verbatimTextOutput(ns("code")),
+        reactable::reactableOutput(ns("table"))
+      ),
+      column(
+        width = 6,
+        h4("Module Code"),
+        tags$pre(
+          paste(format(reactiveTabServer), collapse = "\n")
+        )
+      )
+    )
   )
 }
 
 #' @import ggplot2
 reactiveTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
-    rr_env <- environment()
+    adsl <- reactive(dtlg::adsl[COUNTRY == "USA"])
 
-    pengiun_data <- reactive(palmerpenguins::penguins)
+    table_code <- reactive({
+      dat <- dtlg::calc_stats(dt = adsl(), "AGE", treat = "TRT01A")
 
-    plot_code <- reactive({
-      ggplot2::ggplot(pengiun_data()) +
-        ggplot2::aes(x = flipper_length_mm, y = body_mass_g, color = species) +
-        ggplot2::geom_point(size = 3, alpha = 0.8) +
-        ggplot2::geom_smooth(method = "lm", se = FALSE) +
-        ggplot2::labs(
-          title = "Flipper Length vs Body Mass of Palmer Penguins",
-          subtitle = "Colored by Species",
-          x = "Flipper Length (mm)",
-          y = "Body Mass (g)",
-          color = "Penguin Species"
-        ) +
-        ggplot2::theme_minimal(base_size = 14) +
-        ggplot2::theme(
-          plot.title = element_text(face = "bold", hjust = 0.5),
-          plot.subtitle = element_text(hjust = 0.5),
-          legend.position = "top"
-        )
+      reactable::reactable(
+        dat[[1]],
+        defaultColDef = reactable::colDef(html = TRUE)
+      )
     })
 
-    output$code <- renderText({
-      # browser()
-      repro(plot_code)
-    })
+    output$code <- renderText(paste(as.character(repro(table_code)), collapse = "\n"))
 
-    output$plot <- renderPlot(plot_code())
+    output$table <- reactable::renderReactable(table_code())
   })
 }
