@@ -2,8 +2,8 @@ reactiveTabUI <- function(id) {
   ns <- NS(id)
 
   tagList(
-    h3("Extracting Dataset from Reactive"),
-    p("Taking the definition of a dataset from another reactive, and using in the summary calculation."),
+    h3("Extracting Shiny Input"),
+    p("Taking the value of a Shiny input, and using in the summary calculation."),
     fluidRow(
       column(
         width = 6,
@@ -40,7 +40,7 @@ reactiveTabServer <- function(id) {
       )
     })
 
-    output$code <- renderText(paste(as.character(repro(table_code)), collapse = "\n"))
+    output$code <- renderText(repro(table_code)@script)
 
     output$table <- reactable::renderReactable(table_code())
   })

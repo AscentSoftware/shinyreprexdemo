@@ -47,7 +47,7 @@ inputTabServer <- function(id) {
       )
     })
 
-    output$code <- renderText(paste(as.character(repro(table_code)), collapse = "\n"))
+    output$code <- renderText(repro(table_code)@script)
 
     output$table <- reactable::renderReactable(table_code())
   })
