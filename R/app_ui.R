@@ -2,6 +2,7 @@
 #'
 #' @param request Internal parameter for `{shiny}`.
 #'
+#' @import shiny
 #' @noRd
 app_ui <- function(request) {
   tagList(

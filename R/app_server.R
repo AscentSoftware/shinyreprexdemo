@@ -4,6 +4,5 @@
 #'
 #' @noRd
 app_server <- function(input, output, session) {
-  # observe(app_session <<- session)
   reactiveTabServer("reactive")
 }

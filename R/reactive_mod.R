@@ -40,3 +40,5 @@ reactiveTabServer <- function(id) {
     output$table <- reactable::renderReactable(table_code())
   })
 }
+
+utils::globalVariables("COUNTRY")
