@@ -24,7 +24,7 @@ reactiveTabUI <- function(id) {
 #' @import ggplot2
 reactiveTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
-    adsl <- reactive(dtlg::adsl[COUNTRY == "USA"])
+    adsl <- reactive(data.table(dtlg::adsl)[COUNTRY == "USA"])
 
     table_code <- reactive({
       dat <- dtlg::calc_stats(dt = adsl(), "AGE", treat = "TRT01A")
