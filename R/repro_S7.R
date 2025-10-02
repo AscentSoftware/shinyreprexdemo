@@ -44,7 +44,10 @@ Repro <- S7::new_class(
         pkgs <- paste0("library(", self@packages, ")")
         pre_reqs <- unlist(self@prerequesites, recursive = FALSE, use.names = FALSE)
 
-        paste(c(pkgs, "", as.character(pre_reqs), as.character(self@code)), collapse = "\n")
+        paste(c(pkgs, "", as.character(pre_reqs), as.character(self@code))) |>
+          formatR::tidy_source(text = _, output = FALSE) |>
+          purrr::pluck("text.tidy") |>
+          paste(collapse = "\n")
       }
     )
   )

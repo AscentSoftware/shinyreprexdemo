@@ -9,6 +9,7 @@ Imports:
     S7,
     data.table,
     dtlg,
+    formatR,
     ggplot2,
     golem,
     purrr,
