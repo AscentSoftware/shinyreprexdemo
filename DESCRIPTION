@@ -4,15 +4,19 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Ashley", "Baldry", , "ashley.baldry@ascent.io", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
-License: What license is it under?
+License: MIT + file LICENSE
 Imports:
     data.table,
     dtlg,
     ggplot2,
     golem,
+    purrr,
     reactable,
+    rlang,
     shiny
 Suggests:
-    devtools
+    devtools,
+    testthat (>= 3.0.0)
 Encoding: UTF-8
 RoxygenNote: 7.3.3
+Config/testthat/edition: 3

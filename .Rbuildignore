@@ -9,3 +9,5 @@ $run_dev.*
 ^\.docker$
 ^\.github$
 ^Dockerfile$
+^\.dockerignore$
+^LICENSE\.md$

@@ -1,3 +1,9 @@
+#' Reproduce Code
+#'
+#' @param x Reactive object
+#' @param env The environment the
+#' @param ... Additional arguments passed to methods
+#'
 #' @export
 repro <- function(x, ..., env = rlang::caller_env()) {
   UseMethod("repro")
@@ -5,7 +11,7 @@ repro <- function(x, ..., env = rlang::caller_env()) {
 
 #' @export
 repro.default <- function(x, ..., env = rlang::caller_env()) {
-  if (identical(class(x), "<-")) repro.call(x, env = env) else x
+  if (inherits(x, "<-")) repro.call(x, env = env) else x
 }
 
 #' @export
