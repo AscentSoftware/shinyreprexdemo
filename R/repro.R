@@ -36,7 +36,9 @@ repro.call <- function(x, ..., env = rlang::caller_env()) {
   pre_assigns <- NULL
   if (is.null(rlang::call_name(x))) return(x)
 
-  if (is_reactive_call(x, env)) {
+  if (is_input_call(x)) {
+    eval_call <- eval(x, envir = env)
+  } else if (is_reactive_call(x, env)) {
     eval_args <- repro(env[[rlang::call_name(x)]], init = FALSE)
     eval_call <- rlang::call2("<-", as.symbol(rlang::call_name(x)), !!!eval_args)
   } else {
@@ -62,4 +64,8 @@ repro.call <- function(x, ..., env = rlang::caller_env()) {
 
 is_reactive_call <- function(x, env = rlang::caller_env()) {
   rlang::is_call(x) && length(rlang::call_args(x)) == 0 && rlang::call_name(x) %in% names(env)
+}
+
+is_input_call <- function(x) {
+  rlang::is_call(x, "$") && identical(as.character(x[[2]]), "input")
 }

@@ -5,4 +5,5 @@
 #' @noRd
 app_server <- function(input, output, session) {
   reactiveTabServer("reactive")
+  inputTabServer("input")
 }

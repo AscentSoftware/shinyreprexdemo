@@ -1,12 +1,21 @@
-reactiveTabUI <- function(id) {
+inputTabUI <- function(id) {
   ns <- NS(id)
+
+  non_date_vars <- dtlg::adsl |>
+    purrr::discard(inherits, what = c("Date", "POSIXct")) |>
+    purrr::map(purrr::attr_getter("label"))
 
   tagList(
     h3("Extracting Dataset from Reactive"),
-    p("Taking the definition of a dataset from another reactive, and using in the summary calculation."),
+    p("Taking the value of an input value in a reactive, and using in the summary calculation."),
     fluidRow(
       column(
         width = 6,
+        selectInput(
+          ns("summary_var"),
+          "Select Summary Variable",
+          purrr::set_names(names(non_date_vars), non_date_vars)
+        ),
         verbatimTextOutput(ns("code")),
         reactable::reactableOutput(ns("table"))
       ),
@@ -14,7 +23,7 @@ reactiveTabUI <- function(id) {
         width = 6,
         h4("Module Code"),
         tags$pre(
-          paste(format(reactiveTabServer), collapse = "\n")
+          paste(format(inputTabServer), collapse = "\n")
         )
       )
     )
@@ -22,16 +31,14 @@ reactiveTabUI <- function(id) {
 }
 
 #' @import ggplot2
-reactiveTabServer <- function(id) {
+inputTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
-    adsl <- reactive(data.table(dtlg::adsl)[COUNTRY == "USA"])
-
     table_code <- reactive({
       dat <- dtlg::calc_stats(
-        dt = adsl(),
-        target = "AGE",
+        dt = dtlg::adsl,
+        target = input$summary_var,
         treat = "TRT01A",
-        target_name = attr(adsl()$AGE, "label")
+        target_name = attr(dtlg::adsl[[input$summary_var]], "label")
       )
 
       reactable::reactable(
