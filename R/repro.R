@@ -56,6 +56,9 @@ S7::method(repro, class_calls) <- function(x, ..., repro_code = Repro(), env = r
     repro_call <- repro(env[[rlang::call_name(x)]])
     repro_code@packages <- repro_call@packages
     eval_call <- rlang::call2("<-", as.symbol(rlang::call_name(x)), !!!repro_call@code)
+  } else if (rlang::is_call(x, "function")) {
+    # TODO: work out how to get expression from within anonymous function body
+    eval_call <- x
   } else {
     reactive_calls <- vapply(rlang::call_args(x), is_reactive_call, env = env, logical(1L))
     repro_args <- lapply(rlang::call_args(x), \(x) repro(x, env = env))
