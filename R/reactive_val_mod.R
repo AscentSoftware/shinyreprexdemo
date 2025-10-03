@@ -1,4 +1,4 @@
-inputTabUI <- function(id) {
+reactiveValTabUI <- function(id) {
   ns <- NS(id)
 
   non_date_vars <- dtlg::adsl |>
@@ -6,8 +6,8 @@ inputTabUI <- function(id) {
     purrr::map(purrr::attr_getter("label"))
 
   tagList(
-    h3("Extracting Shiny Input"),
-    p("Taking the value of a Shiny input, and using in the summary calculation."),
+    h3("Extracting Dataset from Reactive Val"),
+    p("Taking the value of an input value in a reactiveVal, and using in the summary calculation."),
     fluidRow(
       column(
         width = 6,
@@ -23,7 +23,7 @@ inputTabUI <- function(id) {
         width = 6,
         h4("Module Code"),
         highlighter::highlighter(
-          paste(format(inputTabServer), collapse = "\n")
+          paste(format(reactiveValTabServer, width = 80), collapse = "\n")
         )
       )
     )
@@ -31,14 +31,21 @@ inputTabUI <- function(id) {
 }
 
 #' @import ggplot2
-inputTabServer <- function(id) {
+reactiveValTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
+    summary_var <- reactiveVal(NULL)
+
+    observe(summary_var(input$summary_var))
+
     table_code <- reactive({
+      req(summary_var())
+
+      adsl <- data.table(dtlg::adsl)
       dat <- dtlg::calc_stats(
-        dt = dtlg::adsl,
-        target = input$summary_var,
+        dt = adsl,
+        target = summary_var(),
         treat = "TRT01A",
-        target_name = attr(dtlg::adsl[[input$summary_var]], "label")
+        target_name = attr(adsl[[summary_var()]], "label")
       )
 
       reactable::reactable(

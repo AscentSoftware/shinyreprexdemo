@@ -49,6 +49,9 @@ S7::method(repro, class_calls) <- function(x, ..., repro_code = Repro(), env = r
     eval_call <- x
   } else if (is_input_call(x)) {
     eval_call <- eval(x, envir = env)
+  } else if (is_reactive_val_call(x, env)) {
+    reactive_val <- eval(x, envir = env)
+    eval_call <- rlang::call2("<-", as.symbol(rlang::call_name(x)), reactive_val)
   } else if (is_reactive_call(x, env)) {
     repro_call <- repro(env[[rlang::call_name(x)]])
     repro_code@packages <- repro_call@packages

@@ -13,7 +13,8 @@ app_ui <- function(request) {
       h1("Shiny Repro Example"),
       tabsetPanel(
         tabPanel("Reactive", reactiveTabUI("reactive")),
-        tabPanel("Input", inputTabUI("input"))
+        tabPanel("Input", inputTabUI("input")),
+        tabPanel("Reactive Val", reactiveValTabUI("reactiveVal"))
       )
     )
   )

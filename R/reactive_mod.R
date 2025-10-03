@@ -2,8 +2,8 @@ reactiveTabUI <- function(id) {
   ns <- NS(id)
 
   tagList(
-    h3("Extracting Shiny Input"),
-    p("Taking the value of a Shiny input, and using in the summary calculation."),
+    h3("Extracting Dataset from Reactive"),
+    p("Taking the value of an input value in a reactive, and using in the summary calculation."),
     fluidRow(
       column(
         width = 6,
