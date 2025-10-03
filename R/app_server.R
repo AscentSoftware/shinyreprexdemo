@@ -11,4 +11,6 @@ app_server <- function(input, output, session) {
   reactiveValTabServer("reactiveVal")
 
   passedReactiveTabServer("passed_reactive", adsl = react_adsl)
+
+  multiLevelModuleServer("multi_module")
 }
