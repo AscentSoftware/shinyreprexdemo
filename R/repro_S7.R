@@ -41,12 +41,11 @@ Repro <- S7::new_class(
 
     script = S7::new_property(
       getter = function(self) {
-        pkgs <- paste0("library(", self@packages, ")")
+        pkgs <- if (length(self@packages)) paste0("library(", self@packages, ")") else NULL
         pre_reqs <- unlist(self@prerequesites, recursive = FALSE, use.names = FALSE)
 
         paste(c(pkgs, "", as.character(pre_reqs), as.character(self@code))) |>
-          formatR::tidy_source(text = _, output = FALSE) |>
-          purrr::pluck("text.tidy") |>
+          styler::style_text() |>
           paste(collapse = "\n")
       }
     )

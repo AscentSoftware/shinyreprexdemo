@@ -9,13 +9,14 @@ Imports:
     S7,
     data.table,
     dtlg,
-    formatR,
     ggplot2,
     golem,
+    highlighter,
     purrr,
     reactable,
     rlang,
-    shiny
+    shiny,
+    styler
 Suggests:
     devtools,
     testthat (>= 3.0.0)

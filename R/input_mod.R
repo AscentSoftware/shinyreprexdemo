@@ -16,13 +16,13 @@ inputTabUI <- function(id) {
           "Select Summary Variable",
           purrr::set_names(names(non_date_vars), non_date_vars)
         ),
-        verbatimTextOutput(ns("code")),
+        highlighter::highlighterOutput(ns("code")),
         reactable::reactableOutput(ns("table"))
       ),
       column(
         width = 6,
         h4("Module Code"),
-        tags$pre(
+        highlighter::highlighter(
           paste(format(inputTabServer), collapse = "\n")
         )
       )
@@ -47,7 +47,9 @@ inputTabServer <- function(id) {
       )
     })
 
-    output$code <- renderText(repro(table_code)@script)
+    output$code <- highlighter::renderHighlighter(
+      highlighter::highlighter(repro(table_code)@script)
+    )
 
     output$table <- reactable::renderReactable(table_code())
   })

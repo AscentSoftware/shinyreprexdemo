@@ -39,10 +39,10 @@ S7::method(repro, class_reactive) <- function(x, ..., repro_code = Repro(), env 
 #' @noRd
 S7::method(repro, class_calls) <- function(x, ..., repro_code = Repro(), env = rlang::caller_env()) {
   if (rlang::is_call(x[[1]], "::")) {
-    pkg <- as.character(x[[1]][[2]])
-    repro_code@packages <- pkg
+    pkg <- pkg_name <- as.character(x[[1]][[2]])
   } else {
     pkg <- NULL
+    pkg_name <- get_pkg_name(x)
   }
 
   if (is.null(rlang::call_name(x))) {
@@ -51,6 +51,7 @@ S7::method(repro, class_calls) <- function(x, ..., repro_code = Repro(), env = r
     eval_call <- eval(x, envir = env)
   } else if (is_reactive_call(x, env)) {
     repro_call <- repro(env[[rlang::call_name(x)]])
+    repro_code@packages <- repro_call@packages
     eval_call <- rlang::call2("<-", as.symbol(rlang::call_name(x)), !!!repro_call@code)
   } else {
     reactive_calls <- vapply(rlang::call_args(x), is_reactive_call, env = env, logical(1L))
@@ -77,6 +78,7 @@ S7::method(repro, class_calls) <- function(x, ..., repro_code = Repro(), env = r
     repro_code@packages <- purrr::map(repro_args, "packages") |> unlist()
   }
 
+  repro_code@packages <- pkg_name
   repro_code@code <- eval_call
   repro_code
 }
