@@ -30,11 +30,10 @@ inputTabUI <- function(id) {
   )
 }
 
-#' @import ggplot2
 inputTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
     table_code <- reactive({
-      dat <- dtlg::calc_stats(
+      dat <- dtlg::summary_table(
         dt = dtlg::adsl,
         target = input$summary_var,
         treat = "TRT01A",
@@ -42,7 +41,7 @@ inputTabServer <- function(id) {
       )
 
       reactable::reactable(
-        dat[[1]],
+        dat,
         defaultColDef = reactable::colDef(html = TRUE)
       )
     })

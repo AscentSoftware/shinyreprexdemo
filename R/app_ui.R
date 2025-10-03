@@ -12,9 +12,11 @@ app_ui <- function(request) {
     fluidPage(
       h1("Shiny Repro Example"),
       tabsetPanel(
+        selected = "Passed Reactive",
         tabPanel("Reactive", reactiveTabUI("reactive")),
         tabPanel("Input", inputTabUI("input")),
-        tabPanel("Reactive Val", reactiveValTabUI("reactiveVal"))
+        tabPanel("Reactive Val", reactiveValTabUI("reactiveVal")),
+        tabPanel("Passed Reactive", passedReactiveTabUI("passed_reactive"))
       )
     )
   )

@@ -9,7 +9,6 @@ Imports:
     S7,
     data.table,
     dtlg,
-    ggplot2,
     golem,
     highlighter,
     purrr,

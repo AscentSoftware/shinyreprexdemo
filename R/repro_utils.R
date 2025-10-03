@@ -1,7 +1,8 @@
-is_reactive_call <- function(x, env = rlang::caller_env()) {
+is_reactive_call <- function(x, env = rlang::caller_env(), parent_env = FALSE) {
   rlang::is_call(x) &&
     length(rlang::call_args(x)) == 0 &&
-    rlang::call_name(x) %in% names(env)
+    (rlang::call_name(x) %in% names(env) ||
+       (parent_env && rlang::call_name(x) %in% names(parent.env(env))))
 }
 
 is_reactive_val_call <- function(x, env = rlang::caller_env()) {

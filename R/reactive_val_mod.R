@@ -31,7 +31,6 @@ reactiveValTabUI <- function(id) {
   )
 }
 
-#' @import ggplot2
 reactiveValTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
     summary_vars <- reactiveVal(NULL)
@@ -56,6 +55,7 @@ reactiveValTabServer <- function(id) {
     })
 
     output$code <- highlighter::renderHighlighter({
+      req(summary_vars())
       highlighter::highlighter(repro(table_code)@script)
     })
 
