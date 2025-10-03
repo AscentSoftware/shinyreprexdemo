@@ -12,9 +12,10 @@ reactiveValTabUI <- function(id) {
       column(
         width = 6,
         selectInput(
-          ns("summary_var"),
+          ns("summary_vars"),
           "Select Summary Variable",
-          purrr::set_names(names(non_date_vars), non_date_vars)
+          purrr::set_names(names(non_date_vars), non_date_vars),
+          multiple = TRUE
         ),
         highlighter::highlighterOutput(ns("code")),
         reactable::reactableOutput(ns("table"))
@@ -33,30 +34,30 @@ reactiveValTabUI <- function(id) {
 #' @import ggplot2
 reactiveValTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
-    summary_var <- reactiveVal(NULL)
+    summary_vars <- reactiveVal(NULL)
 
-    observe(summary_var(input$summary_var))
+    observe(summary_vars(input$summary_vars))
 
     table_code <- reactive({
-      req(summary_var())
+      req(summary_vars())
 
       adsl <- data.table(dtlg::adsl)
-      dat <- dtlg::calc_stats(
+      dat <- dtlg::summary_table(
         dt = adsl,
-        target = summary_var(),
+        target = summary_vars(),
         treat = "TRT01A",
-        target_name = attr(adsl[[summary_var()]], "label")
+        target_name = vapply(summary_vars(), \(x) attr(adsl[[x]], "label"), character(1L))
       )
 
       reactable::reactable(
-        dat[[1]],
+        dat,
         defaultColDef = reactable::colDef(html = TRUE)
       )
     })
 
-    output$code <- highlighter::renderHighlighter(
+    output$code <- highlighter::renderHighlighter({
       highlighter::highlighter(repro(table_code)@script)
-    )
+    })
 
     output$table <- reactable::renderReactable(table_code())
   })

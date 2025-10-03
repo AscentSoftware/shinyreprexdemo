@@ -41,10 +41,18 @@ Repro <- S7::new_class(
 
     script = S7::new_property(
       getter = function(self) {
-        pkgs <- if (length(self@packages)) paste0("library(", self@packages, ")") else NULL
-        pre_reqs <- unlist(self@prerequesites, recursive = FALSE, use.names = FALSE)
+        pkg_calls <- if (length(self@packages)) c(paste0("library(", self@packages, ")"), "") else NULL
 
-        paste(c(pkgs, "", as.character(pre_reqs), as.character(self@code))) |>
+        prereq_calls <- self@prerequesites |>
+          unlist(recursive = FALSE, use.names = FALSE) |>
+          purrr::map(deparse) |>
+          unlist()
+
+        code_calls <- self@code |>
+          purrr::map(deparse) |>
+          unlist()
+
+        c(pkg_calls, prereq_calls, code_calls) |>
           styler::style_text() |>
           paste(collapse = "\n")
       }
