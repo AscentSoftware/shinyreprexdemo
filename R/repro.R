@@ -55,11 +55,29 @@ S7::method(repro, class_calls) <- function(x, ..., repro_code = Repro(), env = r
   } else if (is_reactive_call(x, env)) {
     repro_call <- repro(env[[rlang::call_name(x)]])
     repro_code@packages <- repro_call@packages
-    eval_call <- rlang::call2("<-", as.symbol(rlang::call_name(x)), !!!repro_call@code)
+
+    if (length(repro_call@code) == 1) {
+      eval_call <- rlang::call2("<-", as.symbol(rlang::call_name(x)), !!!repro_call@code)
+    } else {
+      eval_call <- rlang::call2(
+        "<-",
+        as.symbol(rlang::call_name(x)),
+        rlang::call2("local", rlang::call2("{", !!!repro_call@code))
+      )
+    }
   } else if (is_reactive_call(x, parent.env(env))) {
     repro_call <- repro(parent.env(env)[[rlang::call_name(x)]])
     repro_code@packages <- repro_call@packages
-    eval_call <- rlang::call2("<-", as.symbol(rlang::call_name(x)), !!!repro_call@code)
+
+    if (length(repro_call@code) == 1) {
+      eval_call <- rlang::call2("<-", as.symbol(rlang::call_name(x)), !!!repro_call@code)
+    } else {
+      eval_call <- rlang::call2(
+        "<-",
+        as.symbol(rlang::call_name(x)),
+        rlang::call2("local", rlang::call2("{", !!!repro_call@code))
+      )
+    }
   } else if (rlang::is_call(x, "function")) {
     # TODO: work out how to get expression from within anonymous function body
     eval_call <- x

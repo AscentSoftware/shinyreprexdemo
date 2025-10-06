@@ -44,7 +44,7 @@ multiLevelModuleServer <- function(id) {
     })
 
     observe({
-      non_date_vars <- dtlg::adsl |>
+      non_date_vars <- adam() |>
         purrr::discard(inherits, what = c("Date", "POSIXct")) |>
         purrr::map(purrr::attr_getter("label"))
 
