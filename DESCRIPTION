@@ -6,14 +6,16 @@ Authors@R:
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Imports:
+    S7,
     data.table,
     dtlg,
-    ggplot2,
     golem,
+    highlighter,
     purrr,
     reactable,
     rlang,
-    shiny
+    shiny,
+    styler
 Suggests:
     devtools,
     testthat (>= 3.0.0)
