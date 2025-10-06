@@ -47,7 +47,7 @@ inputTabServer <- function(id) {
     })
 
     output$code <- highlighter::renderHighlighter(
-      highlighter::highlighter(repro(table_code)@script)
+      highlighter::highlighter(shinyrepro::repro(table_code)@script)
     )
 
     output$table <- reactable::renderReactable(table_code())

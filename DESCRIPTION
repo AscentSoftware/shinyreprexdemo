@@ -15,10 +15,13 @@ Imports:
     reactable,
     rlang,
     shiny,
+    shinyrepro,
     styler
 Suggests:
     devtools,
     testthat (>= 3.0.0)
+Remotes:
+    AscentSoftware/shinyrepro
 Encoding: UTF-8
 RoxygenNote: 7.3.3
 Config/testthat/edition: 3
