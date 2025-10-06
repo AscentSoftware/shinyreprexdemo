@@ -12,7 +12,6 @@ app_ui <- function(request) {
     fluidPage(
       h1("Shiny Repro Example"),
       tabsetPanel(
-        selected = "Multi Level",
         tabPanel("Reactive", reactiveTabUI("reactive")),
         tabPanel("Input", inputTabUI("input")),
         tabPanel("Reactive Val", reactiveValTabUI("reactiveVal")),
