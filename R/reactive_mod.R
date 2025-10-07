@@ -45,7 +45,7 @@ reactiveTabServer <- function(id) {
 
     output$table <- reactable::renderReactable(table_code())
 
-    return(adsl)
+    adsl
   })
 }
 
