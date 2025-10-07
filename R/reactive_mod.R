@@ -1,23 +1,9 @@
 reactiveTabUI <- function(id) {
-  ns <- NS(id)
-
-  tagList(
-    h3("Extracting Dataset from Reactive"),
-    p("Taking the value of an input value in a reactive, and using in the summary calculation."),
-    fluidRow(
-      column(
-        width = 6,
-        shinyrepro::reproOutput(ns("code")),
-        reactable::reactableOutput(ns("table"))
-      ),
-      column(
-        width = 6,
-        h4("Module Code"),
-        highlighter::highlighter(
-          paste(format(reactiveTabServer, width = 80), collapse = "\n")
-        )
-      )
-    )
+  repro_tab_ui(
+    id = id,
+    title = "Extracting Dataset from Reactive",
+    description = "Taking the value of an input value in a reactive, and using in the summary calculation.",
+    server_fn = reactiveTabServer
   )
 }
 

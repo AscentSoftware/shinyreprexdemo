@@ -38,7 +38,7 @@ multiLevelModuleUI <- function(id) {
 
 multiLevelModuleServer <- function(id) {
   moduleServer(id, function(input, output, session) {
-    data(list = names(getNamespaceInfo("dtlg", "lazydata")), package = "dtlg", envir = environment())
+    data(list = names(getNamespaceInfo("dtlg", "lazydata")), package = "dtlg")
 
     adam <- reactive({
       dat <- get(input$adam, envir = asNamespace("dtlg"))

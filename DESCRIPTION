@@ -8,17 +8,15 @@ License: MIT + file LICENSE
 Depends:
     R (>= 4.1.0)
 Imports:
-    S7,
+    bslib,
     data.table,
     dtlg,
     golem,
     highlighter,
     purrr,
     reactable,
-    rlang,
     shiny,
-    shinyrepro,
-    styler
+    shinyrepro
 Suggests:
     devtools,
     testthat (>= 3.0.0)

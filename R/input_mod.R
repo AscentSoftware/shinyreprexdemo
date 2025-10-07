@@ -1,31 +1,16 @@
 inputTabUI <- function(id) {
   ns <- NS(id)
 
-  non_date_vars <- dtlg::adsl |>
-    purrr::discard(inherits, what = c("Date", "POSIXct")) |>
-    purrr::map(purrr::attr_getter("label"))
-
-  tagList(
-    h3("Extracting Shiny Input"),
-    p("Taking the value of a Shiny input, and using in the summary calculation."),
-    fluidRow(
-      column(
-        width = 6,
-        selectInput(
-          ns("summary_var"),
-          "Select Summary Variable",
-          purrr::set_names(names(non_date_vars), non_date_vars)
-        ),
-        highlighter::highlighterOutput(ns("code")),
-        reactable::reactableOutput(ns("table"))
-      ),
-      column(
-        width = 6,
-        h4("Module Code"),
-        highlighter::highlighter(
-          paste(format(inputTabServer), collapse = "\n")
-        )
-      )
+  repro_tab_ui(
+    id = id,
+    title = "Extracting Shiny Input",
+    description = "Taking the value of a Shiny input, and using in the summary calculation.",
+    server_fn = inputTabServer,
+    filters = selectizeInput(
+      ns("summary_var"),
+      "Select Summary Variable",
+      purrr::set_names(names(ADSL_FILTER_VARS), ADSL_FILTER_VARS),
+      options = list(dropdownParent = "body")
     )
   )
 }
@@ -46,9 +31,7 @@ inputTabServer <- function(id) {
       )
     })
 
-    output$code <- highlighter::renderHighlighter(
-      highlighter::highlighter(shinyrepro::repro(table_code)@script)
-    )
+    output$code <- shinyrepro::renderRepro(shinyrepro::repro(table_code)@script)
 
     output$table <- reactable::renderReactable(table_code())
   })
