@@ -34,4 +34,3 @@ get_pkg_name <- function(x, base_pkgs = rownames(installed.packages(priority = "
     pkg_name
   }
 }
-
