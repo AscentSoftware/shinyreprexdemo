@@ -7,7 +7,7 @@ reactiveTabUI <- function(id) {
     fluidRow(
       column(
         width = 6,
-        highlighter::highlighterOutput(ns("code")),
+        shinyrepro::reproOutput(ns("code")),
         reactable::reactableOutput(ns("table"))
       ),
       column(
@@ -39,9 +39,7 @@ reactiveTabServer <- function(id) {
       )
     })
 
-    output$code <- highlighter::renderHighlighter(
-      highlighter::highlighter(shinyrepro::repro(table_code)@script)
-    )
+    output$code <- shinyrepro::renderRepro(shinyrepro::repro(table_code)@script)
 
     output$table <- reactable::renderReactable(table_code())
 

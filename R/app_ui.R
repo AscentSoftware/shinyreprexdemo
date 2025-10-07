@@ -15,6 +15,7 @@ app_ui <- function(request) {
         tabPanel("Reactive", reactiveTabUI("reactive")),
         tabPanel("Input", inputTabUI("input")),
         tabPanel("Reactive Val", reactiveValTabUI("reactiveVal")),
+        tabPanel("Reactive Values", reactiveValuesTabUI("reactiveValues")),
         tabPanel("Passed Reactive", passedReactiveTabUI("passed_reactive")),
         tabPanel("Multi Level", multiLevelModuleUI("multi_module"))
       )
