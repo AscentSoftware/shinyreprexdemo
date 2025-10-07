@@ -1,5 +1,12 @@
 #' Reproduce Code
 #'
+#' @description
+#' Reproduce Code
+#'
+#' @param x \code{\link[shiny]{reactive}} object to make reproducible
+#' @param env The environment `x` is defined in. By default it is the environment of where `repro` is called
+#' @param ... Additional arguments to pass to other methods
+#'
 #' @export
 repro <- S7::new_generic(
   name = "repro",

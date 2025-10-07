@@ -21,6 +21,7 @@ is_input_call <- function(x) {
 
 #' Get Call Package Name
 #'
+#' @importFrom utils data installed.packages
 #' @noRd
 get_pkg_name <- function(x, base_pkgs = rownames(installed.packages(priority = "base"))) {
   pkg_name <- tryCatch(

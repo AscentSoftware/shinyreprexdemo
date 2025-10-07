@@ -1,5 +1,12 @@
 #' Reproduce Code
 #'
+#' @param code Code chunks found in a given expression
+#' @param packages Packages found in the function calls in the code and/or pre-requisites
+#' @param prerequesites Code chunks used to generate reactive objects found in the code
+#'
+#' @importFrom styler style_text
+#'
+#' @rdname repro_s7
 #' @export
 Repro <- S7::new_class(
   name = "Repro",
