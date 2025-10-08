@@ -3258,7 +3258,7 @@
       "RemoteUsername": "AscentSoftware",
       "RemoteRepo": "shinyrepro",
       "RemoteRef": "main",
-      "RemoteSha": "28dc0dbcd64701081360ef3183dc0f37981ade86",
+      "RemoteSha": "c30848e5dc7173796e68e41ca2c444c54dda1dd6",
       "RemoteHost": "api.github.com"
     },
     "sourcetools": {

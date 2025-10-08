@@ -21,13 +21,14 @@ app_ui <- function(request) {
           "Each module showcases reusable components with reproducible code."
         )
       ),
-      bslib::navset_tab(
+      bslib::navset_pill(
         bslib::nav_panel("Reactive", reactiveTabUI("reactive")),
         bslib::nav_panel("Input", inputTabUI("input")),
         bslib::nav_panel("Bind Event", bindTabUI("bind")),
         bslib::nav_panel("Reactive Val", reactiveValTabUI("reactiveVal")),
         bslib::nav_panel("Reactive Values", reactiveValuesTabUI("reactiveValues")),
         bslib::nav_panel("Passed Reactive", passedReactiveTabUI("passed_reactive")),
+        bslib::nav_panel("If/Else", ifelseTabUI("ifelse")),
         bslib::nav_panel("Multi Level", multiLevelModuleUI("multi_module")),
       )
     )

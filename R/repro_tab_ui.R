@@ -26,6 +26,7 @@ repro_tab_ui <- function(id, title, description, server_fn, filters = NULL) {
     h2(class = "mt-4", title),
     tags$p(class = "text-muted", description),
     shiny::fluidRow(
+      class = "mt-3",
       div(
         class = "col-12 col-lg-7",
         if (length(filters) > 0L) {
@@ -36,16 +37,17 @@ repro_tab_ui <- function(id, title, description, server_fn, filters = NULL) {
         },
         bslib::card(
           bslib::card_header(
-            class = "d-flex flex-row justify-content-between",
+            class = "d-flex flex-row justify-content-between align-items-center",
             div(
               "Generated Code",
               tags$p(class = "mb-0 text-muted", "View the R code used to generate this table")
             ),
             tags$button(
-              class = "btn btn-secondary btn-sm",
               type = "button",
+              class = "btn btn-secondary btn-sm",
               `data-bs-toggle` = "collapse",
               `data-bs-target` = paste0("#", ns("code_body")),
+              `data-text-alt` = "Hide Code",
               "Show Code"
             )
           ),
