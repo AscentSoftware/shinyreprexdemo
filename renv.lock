@@ -3242,10 +3242,10 @@
         "S7",
         "purrr",
         "rlang",
-        "shiny",
         "styler"
       ],
       "Suggests": [
+        "shiny",
         "testthat (>= 3.0.0)"
       ],
       "Encoding": "UTF-8",
@@ -3258,7 +3258,7 @@
       "RemoteUsername": "AscentSoftware",
       "RemoteRepo": "shinyrepro",
       "RemoteRef": "main",
-      "RemoteSha": "48763bfeac8e3b170d9d54d3caaa41087129ac77",
+      "RemoteSha": "aa35dded9e70513d4934543da5dfc50688313210",
       "RemoteHost": "api.github.com"
     },
     "sourcetools": {

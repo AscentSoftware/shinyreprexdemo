@@ -58,8 +58,9 @@ multiLevelModuleServer <- function(id) {
       summary_var = reactive(input$summary_var)
     )
 
-    output$code <- shinyrepro::renderRepro(tbl)
-
+    output$code <- highlighter::renderHighlighter({
+      highlighter::highlighter(shinyrepro::repro(tbl))
+    })
     output$table <- reactable::renderReactable(tbl())
   })
 }

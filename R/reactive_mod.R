@@ -1,3 +1,11 @@
+#' Reproducible Code Modules
+#'
+#' @description
+#' A series of modules that are used
+#'
+#' @param id The ID string to be namespaced
+#'
+#' @rdname repro_modules
 reactiveTabUI <- function(id) {
   repro_tab_ui(
     id = id,
@@ -7,6 +15,8 @@ reactiveTabUI <- function(id) {
   )
 }
 
+#' @rdname repro_modules
+#' @noRd
 reactiveTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
     adsl <- reactive(data.table(dtlg::adsl)[COUNTRY == "USA"])
@@ -25,7 +35,9 @@ reactiveTabServer <- function(id) {
       )
     })
 
-    output$code <- shinyrepro::renderRepro(table_code)
+    output$code <- highlighter::renderHighlighter({
+      highlighter::highlighter(shinyrepro::repro(table_code))
+    })
 
     output$table <- reactable::renderReactable(table_code())
 

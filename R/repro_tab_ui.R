@@ -52,7 +52,7 @@ repro_tab_ui <- function(id, title, description, server_fn, filters = NULL) {
           bslib::card_body(
             id = ns("code_body"),
             class = "collapse",
-            shinyrepro::reproOutput(ns("code"))
+            highlighter::highlighterOutput(ns("code"))
           )
         ),
         bslib::card(
