@@ -8,6 +8,8 @@ app_server <- function(input, output, session) {
 
   inputTabServer("input")
 
+  bindTabServer("bind")
+
   reactiveValTabServer("reactiveVal")
 
   reactiveValuesTabServer("reactiveValues")

@@ -5,6 +5,9 @@
 #'
 #' @param id The ID string to be namespaced
 #'
+#' @details
+#' \code{reactiveTabUI} -
+#'
 #' @rdname repro_modules
 reactiveTabUI <- function(id) {
   repro_tab_ui(

@@ -24,6 +24,7 @@ app_ui <- function(request) {
       bslib::navset_tab(
         bslib::nav_panel("Reactive", reactiveTabUI("reactive")),
         bslib::nav_panel("Input", inputTabUI("input")),
+        bslib::nav_panel("Bind Event", bindTabUI("bind")),
         bslib::nav_panel("Reactive Val", reactiveValTabUI("reactiveVal")),
         bslib::nav_panel("Reactive Values", reactiveValuesTabUI("reactiveValues")),
         bslib::nav_panel("Passed Reactive", passedReactiveTabUI("passed_reactive")),
