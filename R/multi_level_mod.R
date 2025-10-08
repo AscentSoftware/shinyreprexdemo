@@ -1,41 +1,34 @@
 multiLevelModuleUI <- function(id) {
   ns <- NS(id)
 
-  non_date_vars <- dtlg::adsl |>
-    purrr::discard(inherits, what = c("Date", "POSIXct")) |>
-    purrr::map(purrr::attr_getter("label"))
-
-  tagList(
-    h3("Multiple Level Module"),
-    p("Taking a reactive object sent as an argument into the module, and using in the summary calculation."),
-    fluidRow(
-      column(
-        width = 6,
-        selectInput(
-          ns("adam"),
-          "ADaM dataset",
-          names(getNamespaceInfo("dtlg", "lazydata")),
-          selected = "adsl"
-        ),
-        selectInput(
-          ns("summary_var"),
-          "Select Summary Variable",
-          purrr::set_names(names(non_date_vars), non_date_vars)
-        ),
-        highlighter::highlighterOutput(ns("code")),
-        reactable::reactableOutput(ns("table"))
+  repro_tab_ui(
+    id = id,
+    title = "Multiple Level Module",
+    description = paste(
+      "Passing reactive values from parent to child module, returning the",
+      "result to the parent module to evaluate the code generated."
+    ),
+    server_fn = multiLevelModuleServer,
+    filters = tagList(
+      selectizeInput(
+        ns("adam"),
+        "ADaM dataset",
+        names(getNamespaceInfo("dtlg", "lazydata")),
+        selected = "adsl",
+        options = list(dropdownParent = "body")
       ),
-      column(
-        width = 6,
-        h4("Module Code"),
-        highlighter::highlighter(
-          paste(format(multiLevelModuleServer, width = 80), collapse = "\n")
-        )
+      selectizeInput(
+        ns("summary_var"),
+        "Select Summary Variable",
+        purrr::set_names(names(ADSL_FILTER_VARS), ADSL_FILTER_VARS),
+        options = list(dropdownParent = "body")
       )
     )
   )
 }
 
+#' @importFrom utils data
+#' @noRd
 multiLevelModuleServer <- function(id) {
   moduleServer(id, function(input, output, session) {
     data(list = names(getNamespaceInfo("dtlg", "lazydata")), package = "dtlg")
@@ -65,9 +58,7 @@ multiLevelModuleServer <- function(id) {
       summary_var = reactive(input$summary_var)
     )
 
-    output$code <- highlighter::renderHighlighter({
-      highlighter::highlighter(shinyrepro::repro(tbl)@script)
-    })
+    output$code <- shinyrepro::renderRepro(shinyrepro::repro(tbl)@script)
 
     output$table <- reactable::renderReactable(tbl())
   })

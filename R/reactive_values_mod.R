@@ -1,32 +1,20 @@
 reactiveValuesTabUI <- function(id) {
   ns <- NS(id)
 
-  non_date_vars <- dtlg::adsl |>
-    purrr::discard(inherits, what = c("Date", "POSIXct")) |>
-    purrr::map(purrr::attr_getter("label"))
-
-  tagList(
-    h3("Extracting Dataset from Reactive Values"),
-    p("Taking the value of a stored object within a reactiveValues, and using in the summary calculation."),
-    fluidRow(
-      column(
-        width = 6,
-        selectInput(
-          ns("summary_vars"),
-          "Select Summary Variable",
-          purrr::set_names(names(non_date_vars), non_date_vars),
-          multiple = TRUE
-        ),
-        highlighter::highlighterOutput(ns("code")),
-        reactable::reactableOutput(ns("table"))
-      ),
-      column(
-        width = 6,
-        h4("Module Code"),
-        highlighter::highlighter(
-          paste(format(reactiveValTabServer, width = 80), collapse = "\n")
-        )
-      )
+  repro_tab_ui(
+    id = id,
+    title = "Extracting Dataset from Reactive Values",
+    description = paste(
+      "Assigning an input to an object within reactiveValues,",
+      "then using that value in the summary calculation."
+    ),
+    server_fn = reactiveValuesTabServer,
+    filters = selectizeInput(
+      ns("summary_vars"),
+      "Select Summary Variables",
+      purrr::set_names(names(ADSL_FILTER_VARS), ADSL_FILTER_VARS),
+      multiple = TRUE,
+      options = list(dropdownParent = "body")
     )
   )
 }

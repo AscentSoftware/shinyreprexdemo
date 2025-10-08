@@ -16,7 +16,8 @@ Imports:
     purrr,
     reactable,
     shiny,
-    shinyrepro
+    shinyrepro,
+    styler
 Suggests:
     devtools,
     testthat (>= 3.0.0)

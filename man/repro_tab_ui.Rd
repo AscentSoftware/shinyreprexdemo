@@ -4,12 +4,30 @@
 \alias{repro_tab_ui}
 \title{Reproducible Tab Module}
 \usage{
-repro_tab_ui(id, title, description, filters = NULL)
+repro_tab_ui(id, title, description, server_fn, filters = NULL)
 }
 \arguments{
-\item{id}{}
+\item{id}{Namespace ID to be used to communicate between UI and Server}
+
+\item{title}{Title to be given to the tab}
+
+\item{description}{Description to be given to the tab}
+
+\item{server_fn}{Function expression that is being used for the server}
+
+\item{filters}{An optional list of filters that are used in the module}
 }
 \description{
 A generic module that can show reproducible code in the left hand side with
 the module code in the right hand side.
+}
+\examples{
+\dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
+repro_tab_ui(
+  id = "reactive",
+  title = "Reactive Value",
+  description = "Taking a reactive value into the expression",
+  server_fn = reactiveTabServer
+)
+\dontshow{\}) # examplesIf}
 }

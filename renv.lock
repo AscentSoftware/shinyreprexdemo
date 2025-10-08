@@ -3251,14 +3251,15 @@
       "Encoding": "UTF-8",
       "RoxygenNote": "7.3.3",
       "Config/testthat/edition": "3",
+      "Config/Needs/website": "ascentsoftware/ascentdown",
       "Author": "Ashley Baldry [aut, cre]",
       "Maintainer": "Ashley Baldry <ashley.baldry@ascent.io>",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
       "RemoteUsername": "AscentSoftware",
       "RemoteRepo": "shinyrepro",
       "RemoteRef": "main",
-      "RemoteSha": "f35134c7b1ad49dae1b94e3caf2b9bd8beaeab56"
+      "RemoteSha": "f5debb9b04c874f15c674566625c935854df58c5",
+      "RemoteHost": "api.github.com"
     },
     "sourcetools": {
       "Package": "sourcetools",

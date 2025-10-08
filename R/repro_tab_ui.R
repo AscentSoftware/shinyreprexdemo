@@ -4,11 +4,19 @@
 #' A generic module that can show reproducible code in the left hand side with
 #' the module code in the right hand side.
 #'
-#' @param id
-#' @param title
-#' @param description
-#' @param server_fn
-#' @param filters
+#' @param id Namespace ID to be used to communicate between UI and Server
+#' @param title Title to be given to the tab
+#' @param description Description to be given to the tab
+#' @param server_fn Function expression that is being used for the server
+#' @param filters An optional list of filters that are used in the module
+#'
+#' @examplesIf interactive()
+#' repro_tab_ui(
+#'   id = "reactive",
+#'   title = "Reactive Value",
+#'   description = "Taking a reactive value into the expression",
+#'   server_fn = reactiveTabServer
+#' )
 #'
 #' @export
 repro_tab_ui <- function(id, title, description, server_fn, filters = NULL) {

@@ -1,23 +1,14 @@
+#' @rdname passed_reactive_mod
+#' @noRd
 passedReactiveTabUI <- function(id) {
-  ns <- NS(id)
-
-  tagList(
-    h3("Reactive Input Argument"),
-    p("Taking a reactive object sent as an argument into the module, and using in the summary calculation."),
-    fluidRow(
-      column(
-        width = 6,
-        highlighter::highlighterOutput(ns("code")),
-        reactable::reactableOutput(ns("table"))
-      ),
-      column(
-        width = 6,
-        h4("Module Code"),
-        highlighter::highlighter(
-          paste(format(passedReactiveTabServer, width = 80), collapse = "\n")
-        )
-      )
-    )
+  repro_tab_ui(
+    id = id,
+    title = "Reactive Input Argument",
+    description = paste(
+      "Taking a reactive object sent as an argument into the module,",
+      "and using in the summary calculation."
+    ),
+    server_fn = passedReactiveTabServer,
   )
 }
 
@@ -37,12 +28,8 @@ passedReactiveTabServer <- function(id, adsl) {
       )
     })
 
-    output$code <- highlighter::renderHighlighter(
-      highlighter::highlighter(shinyrepro::repro(table_code)@script)
-    )
+    output$code <- shinyrepro::renderRepro(shinyrepro::repro(table_code)@script)
 
     output$table <- reactable::renderReactable(table_code())
   })
 }
-
-utils::globalVariables("COUNTRY")
