@@ -58,7 +58,7 @@ multiLevelModuleServer <- function(id) {
       summary_var = reactive(input$summary_var)
     )
 
-    output$code <- shinyrepro::renderRepro(shinyrepro::repro(tbl)@script)
+    output$code <- shinyrepro::renderRepro(tbl)
 
     output$table <- reactable::renderReactable(tbl())
   })

@@ -39,9 +39,9 @@ reactiveValTabServer <- function(id) {
       )
     })
 
-    output$code <- highlighter::renderHighlighter({
+    output$code <- shinyrepro::renderRepro({
       req(summary_vars())
-      highlighter::highlighter(shinyrepro::repro(table_code)@script)
+      table_code
     })
 
     output$table <- reactable::renderReactable(table_code())

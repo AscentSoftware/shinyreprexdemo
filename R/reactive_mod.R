@@ -25,7 +25,7 @@ reactiveTabServer <- function(id) {
       )
     })
 
-    output$code <- shinyrepro::renderRepro(shinyrepro::repro(table_code)@script)
+    output$code <- shinyrepro::renderRepro(table_code)
 
     output$table <- reactable::renderReactable(table_code())
 
