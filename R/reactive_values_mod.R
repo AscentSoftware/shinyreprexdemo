@@ -26,7 +26,7 @@ reactiveValuesTabServer <- function(id) {
     observe(rv$summary_vars <- input$summary_vars)
 
     table_code <- reactive({
-      req(rv$summary_vars)
+      validate(need(length(rv$summary_vars) > 0L, "No summary variable(s) have been selected"))
 
       adsl <- data.table(dtlg::adsl)
       dat <- dtlg::summary_table(
@@ -42,9 +42,10 @@ reactiveValuesTabServer <- function(id) {
       )
     })
 
-    output$code <- shinyrepro::renderRepro({
-      req(rv$summary_vars)
-      table_code
+    output$code <- highlighter::renderHighlighter({
+      validate(need(length(rv$summary_vars) > 0L, "No summary variable(s) have been selected"))
+      highlighter::highlighter(shinyrepro::repro(table_code))
+
     })
 
     output$table <- reactable::renderReactable(table_code())

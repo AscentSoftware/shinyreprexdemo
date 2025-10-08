@@ -6,7 +6,8 @@ passedReactiveTabUI <- function(id) {
     title = "Reactive Input Argument",
     description = paste(
       "Taking a reactive object sent as an argument into the module,",
-      "and using in the summary calculation."
+      "and using in the summary calculation. In this example, adsl has",
+      "come from the 'Reactive' tab."
     ),
     server_fn = passedReactiveTabServer,
   )
