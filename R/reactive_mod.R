@@ -1,26 +1,25 @@
+#' Reproducible Code Modules
+#'
+#' @description
+#' A series of modules that are used
+#'
+#' @param id The ID string to be namespaced
+#'
+#' @details
+#' \code{reactiveTabUI} -
+#'
+#' @rdname repro_modules
 reactiveTabUI <- function(id) {
-  ns <- NS(id)
-
-  tagList(
-    h3("Extracting Dataset from Reactive"),
-    p("Taking the value of an input value in a reactive, and using in the summary calculation."),
-    fluidRow(
-      column(
-        width = 6,
-        highlighter::highlighterOutput(ns("code")),
-        reactable::reactableOutput(ns("table"))
-      ),
-      column(
-        width = 6,
-        h4("Module Code"),
-        highlighter::highlighter(
-          paste(format(reactiveTabServer, width = 80), collapse = "\n")
-        )
-      )
-    )
+  repro_tab_ui(
+    id = id,
+    title = "Extracting Dataset from Reactive",
+    description = "Taking the value of an input value in a reactive, and using in the summary calculation.",
+    server_fn = reactiveTabServer
   )
 }
 
+#' @rdname repro_modules
+#' @noRd
 reactiveTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
     adsl <- reactive(data.table(dtlg::adsl)[COUNTRY == "USA"])
@@ -39,9 +38,9 @@ reactiveTabServer <- function(id) {
       )
     })
 
-    output$code <- highlighter::renderHighlighter(
-      highlighter::highlighter(repro(table_code)@script)
-    )
+    output$code <- highlighter::renderHighlighter({
+      highlighter::highlighter(shinyrepro::repro(table_code))
+    })
 
     output$table <- reactable::renderReactable(table_code())
 

@@ -8,19 +8,21 @@ License: MIT + file LICENSE
 Depends:
     R (>= 4.1.0)
 Imports:
-    S7,
+    bslib,
     data.table,
     dtlg,
     golem,
     highlighter,
     purrr,
     reactable,
-    rlang,
     shiny,
+    shinyrepro,
     styler
 Suggests:
     devtools,
     testthat (>= 3.0.0)
+Remotes:
+    AscentSoftware/shinyrepro
 Encoding: UTF-8
 RoxygenNote: 7.3.3
 Config/testthat/edition: 3

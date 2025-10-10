@@ -9,14 +9,27 @@
 app_ui <- function(request) {
   tagList(
     add_external_resources(),
-    fluidPage(
-      h1("Shiny Repro Example"),
-      tabsetPanel(
-        tabPanel("Reactive", reactiveTabUI("reactive")),
-        tabPanel("Input", inputTabUI("input")),
-        tabPanel("Reactive Val", reactiveValTabUI("reactiveVal")),
-        tabPanel("Passed Reactive", passedReactiveTabUI("passed_reactive")),
-        tabPanel("Multi Level", multiLevelModuleUI("multi_module"))
+    bslib::page_fluid(
+      title = "Shiny Repro Explorer",
+      class = "min-vh-100 bg-body p-4 p-lg-5",
+      div(
+        class = "mb-3 mb-lg-3",
+        h1("Shiny Repro Explorer"),
+        tags$p(
+          class = "text-muted",
+          "Interactive demonstration of modular Shiny application design patterns.",
+          "Each module showcases reusable components with reproducible code."
+        )
+      ),
+      bslib::navset_pill(
+        bslib::nav_panel("Reactive", reactiveTabUI("reactive")),
+        bslib::nav_panel("Input", inputTabUI("input")),
+        bslib::nav_panel("Bind Event", bindTabUI("bind")),
+        bslib::nav_panel("Reactive Val", reactiveValTabUI("reactiveVal")),
+        bslib::nav_panel("Reactive Values", reactiveValuesTabUI("reactiveValues")),
+        bslib::nav_panel("Passed Reactive", passedReactiveTabUI("passed_reactive")),
+        bslib::nav_panel("If/Else", ifelseTabUI("ifelse")),
+        bslib::nav_panel("Multi Level", multiLevelModuleUI("multi_module")),
       )
     )
   )

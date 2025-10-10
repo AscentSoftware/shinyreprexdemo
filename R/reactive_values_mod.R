@@ -1,11 +1,14 @@
-reactiveValTabUI <- function(id) {
+reactiveValuesTabUI <- function(id) {
   ns <- NS(id)
 
   repro_tab_ui(
     id = id,
-    title = "Extracting Dataset from Reactive Val",
-    description = "Assigning an input to a reactiveVal, then using that value in the summary calculation.",
-    server_fn = reactiveValTabServer,
+    title = "Extracting Dataset from Reactive Values",
+    description = paste(
+      "Assigning an input to an object within reactiveValues,",
+      "then using that value in the summary calculation."
+    ),
+    server_fn = reactiveValuesTabServer,
     filters = selectizeInput(
       ns("summary_vars"),
       "Select Summary Variables",
@@ -16,21 +19,21 @@ reactiveValTabUI <- function(id) {
   )
 }
 
-reactiveValTabServer <- function(id) {
+reactiveValuesTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
-    summary_vars <- reactiveVal(NULL)
+    rv <- reactiveValues(summary_vars = NULL)
 
-    observe(summary_vars(input$summary_vars))
+    observe(rv$summary_vars <- input$summary_vars)
 
     table_code <- reactive({
-      validate(need(length(summary_vars()) > 0L, "No summary variable(s) have been selected"))
+      validate(need(length(rv$summary_vars) > 0L, "No summary variable(s) have been selected"))
 
       adsl <- data.table(dtlg::adsl)
       dat <- dtlg::summary_table(
         dt = adsl,
-        target = summary_vars(),
+        target = rv$summary_vars,
         treat = "TRT01A",
-        target_name = vapply(summary_vars(), \(x) attr(adsl[[x]], "label"), character(1L))
+        target_name = vapply(rv$summary_vars, \(x) attr(adsl[[x]], "label"), character(1L))
       )
 
       reactable::reactable(
@@ -40,8 +43,9 @@ reactiveValTabServer <- function(id) {
     })
 
     output$code <- highlighter::renderHighlighter({
-      validate(need(length(summary_vars()) > 0L, "No summary variable(s) have been selected"))
+      validate(need(length(rv$summary_vars) > 0L, "No summary variable(s) have been selected"))
       highlighter::highlighter(shinyrepro::repro(table_code))
+
     })
 
     output$table <- reactable::renderReactable(table_code())

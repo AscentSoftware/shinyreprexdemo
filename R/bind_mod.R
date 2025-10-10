@@ -1,11 +1,11 @@
-inputTabUI <- function(id) {
+bindTabUI <- function(id) {
   ns <- NS(id)
 
   repro_tab_ui(
     id = id,
-    title = "Extracting Shiny Input",
-    description = "Taking the value of a Shiny input, and using in the summary calculation.",
-    server_fn = inputTabServer,
+    title = "Ignoring bindEvent",
+    description = "Extracting the reactive from a given bindCache and bindEvent to get correct code.",
+    server_fn = bindTabServer,
     filters = selectizeInput(
       ns("summary_var"),
       "Select Summary Variable",
@@ -15,21 +15,28 @@ inputTabUI <- function(id) {
   )
 }
 
-inputTabServer <- function(id) {
+bindTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
+    summary_var <- reactive({
+      input$summary_var
+    }) |>
+      bindEvent(input$summary_var)
+
     table_code <- reactive({
       dat <- dtlg::summary_table(
         dt = dtlg::adsl,
-        target = input$summary_var,
+        target = summary_var(),
         treat = "TRT01A",
-        target_name = attr(dtlg::adsl[[input$summary_var]], "label")
+        target_name = attr(dtlg::adsl[[summary_var()]], "label")
       )
 
       reactable::reactable(
         dat,
         defaultColDef = reactable::colDef(html = TRUE)
       )
-    })
+    }) |>
+      bindCache(summary_var()) |>
+      bindEvent(summary_var())
 
     output$code <- highlighter::renderHighlighter({
       highlighter::highlighter(shinyrepro::repro(table_code))

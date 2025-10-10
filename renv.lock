@@ -3226,6 +3226,41 @@
       "Maintainer": "Winston Chang <winston@posit.co>",
       "Repository": "RSPM"
     },
+    "shinyrepro": {
+      "Package": "shinyrepro",
+      "Version": "0.1.0",
+      "Source": "GitHub",
+      "Type": "Package",
+      "Title": "Reproducible Code for 'Shiny' Objects",
+      "Authors@R": "c(person(\"Ashley\", \"Baldry\", email = \"ashley.baldry@ascent.io\", role = c(\"aut\", \"cre\")))",
+      "Description": "Provides functionality to extract reactive expressions from a 'Shiny' application and  convert them into standalone R scripts. This enables users to reproduce tables and visualizations  outside the interactive UI, facilitating integration into static reports or automated workflows  without requiring access to the original application source code.",
+      "License": "MIT + file LICENSE",
+      "Depends": [
+        "R (>= 4.1.0)"
+      ],
+      "Imports": [
+        "S7",
+        "purrr",
+        "rlang",
+        "styler"
+      ],
+      "Suggests": [
+        "shiny",
+        "testthat (>= 3.0.0)"
+      ],
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.3",
+      "Config/testthat/edition": "3",
+      "Config/Needs/website": "ascentsoftware/ascentdown",
+      "Author": "Ashley Baldry [aut, cre]",
+      "Maintainer": "Ashley Baldry <ashley.baldry@ascent.io>",
+      "RemoteType": "github",
+      "RemoteUsername": "AscentSoftware",
+      "RemoteRepo": "shinyrepro",
+      "RemoteRef": "main",
+      "RemoteSha": "c30848e5dc7173796e68e41ca2c444c54dda1dd6",
+      "RemoteHost": "api.github.com"
+    },
     "sourcetools": {
       "Package": "sourcetools",
       "Version": "0.1.7-1",
