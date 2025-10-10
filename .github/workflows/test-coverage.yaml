@@ -13,7 +13,7 @@ jobs:
   test-coverage:
     runs-on: ubuntu-latest
     env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GH_PAT }}
 
     steps:
       - uses: actions/checkout@v4
@@ -26,8 +26,6 @@ jobs:
         with:
           extra-packages: any::covr, any::xml2
           needs: coverage
-        env:
-          GITHUB_PAT: ${{ secrets.GH_PAT }}
 
       - name: Test coverage
         run: |
