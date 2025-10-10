@@ -57,10 +57,11 @@ run_app()
 
 ### Docker
 
-You can run this Shiny app using Docker for a consistent, dependency-free environment.
+You can run this Shiny app using Docker for a consistent, dependency-free environment. A GitHub PAT is required
+to access the internal {shinyrepro} repository.
 
 ```shell
-docker build -t shinyreproapp .
+docker build --build-arg GITHUB_PAT=<YOUR_GITHUB_TOKEN> -t shinyreproapp .
 docker run -p 3838:3838 shinyreproapp
 ```
 

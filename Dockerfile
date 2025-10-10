@@ -10,6 +10,11 @@ COPY ./.docker/sshd_config /etc/ssh/.
 RUN echo "root:Docker!" | chpasswd
 RUN ssh-keygen -A
 
+
+# Set build-time argument
+ARG GITHUB_PAT
+ENV GITHUB_PAT=${GITHUB_PAT}
+
 # Install renv
 RUN R -e "options(renv.config.repos.override = 'https://packagemanager.posit.co/cran/latest')"
 RUN R -e "install.packages('remotes')"
