@@ -27,7 +27,7 @@ jobs:
           extra-packages: any::covr, any::xml2
           needs: coverage
         env:
-          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
+          GITHUB_PAT: ${{ secrets.GH_PAT }}
 
       - name: Test coverage
         run: |
