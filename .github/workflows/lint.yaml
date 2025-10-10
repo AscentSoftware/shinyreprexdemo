@@ -25,6 +25,8 @@ jobs:
         with:
           extra-packages: any::lintr, local::.
           needs: lint
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_PAT }}
 
       - name: Lint
         run: lintr::lint_package()
