@@ -1,3 +1,7 @@
+#' @details
+#' \code{multiLevelModuleUI} - Reactives being passed to a sub-module, only to be rendered in the parent module
+#'
+#' @rdname repro_modules
 multiLevelModuleUI <- function(id) {
   ns <- NS(id)
 
@@ -28,6 +32,8 @@ multiLevelModuleUI <- function(id) {
 }
 
 #' @importFrom utils data
+#'
+#' @rdname repro_modules
 #' @noRd
 multiLevelModuleServer <- function(id) {
   moduleServer(id, function(input, output, session) {

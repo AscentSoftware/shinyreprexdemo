@@ -48,6 +48,7 @@ add_external_resources <- function() {
     golem::bundle_resources(
       path = app_sys("app/www"),
       app_title = "Shiny Repro Example"
-    )
+    ),
+    tags$link(rel = "shortcut icon", href = "www/favicon.ico")
   )
 }
