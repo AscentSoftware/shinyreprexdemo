@@ -1,5 +1,7 @@
-#' @rdname passed_reactive_mod
-#' @noRd
+#' @details
+#' \code{passedReactiveTabUI} - A reactive from another module being used in the selected module
+#'
+#' @rdname repro_modules
 passedReactiveTabUI <- function(id) {
   repro_tab_ui(
     id = id,
@@ -13,6 +15,8 @@ passedReactiveTabUI <- function(id) {
   )
 }
 
+#' @rdname repro_modules
+#' @noRd
 passedReactiveTabServer <- function(id, adsl) {
   moduleServer(id, function(input, output, session) {
     table_code <- reactive({

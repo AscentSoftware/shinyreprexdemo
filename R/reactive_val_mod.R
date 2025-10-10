@@ -1,3 +1,7 @@
+#' @details
+#' \code{reactiveValuesTabUI} - A \code{\link[shiny]{reactiveVal}} used within a reactive
+#'
+#' @rdname repro_modules
 reactiveValTabUI <- function(id) {
   ns <- NS(id)
 
@@ -16,6 +20,8 @@ reactiveValTabUI <- function(id) {
   )
 }
 
+#' @rdname repro_modules
+#' @noRd
 reactiveValTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
     summary_vars <- reactiveVal(NULL)

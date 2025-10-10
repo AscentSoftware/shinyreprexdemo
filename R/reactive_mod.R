@@ -1,12 +1,12 @@
 #' Reproducible Code Modules
 #'
 #' @description
-#' A series of modules that are used
+#' A series of modules that are used to show how the reproducing of Shiny code works.
 #'
-#' @param id The ID string to be namespaced
+#' @param id An ID string that identifies the namespace of the UI and server components.
 #'
 #' @details
-#' \code{reactiveTabUI} -
+#' \code{reactiveTabUI} - A reactive object being passed into another reactive object
 #'
 #' @rdname repro_modules
 reactiveTabUI <- function(id) {

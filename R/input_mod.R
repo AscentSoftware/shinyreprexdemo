@@ -1,3 +1,7 @@
+#' @details
+#' \code{inputTabUI} - A Shiny input being used within the reactive
+#'
+#' @rdname repro_modules
 inputTabUI <- function(id) {
   ns <- NS(id)
 
@@ -15,6 +19,8 @@ inputTabUI <- function(id) {
   )
 }
 
+#' @rdname repro_modules
+#' @noRd
 inputTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
     table_code <- reactive({

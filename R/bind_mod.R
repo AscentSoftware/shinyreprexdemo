@@ -1,3 +1,7 @@
+#' @details
+#' \code{bindTabUI} - \code{\link[shiny]{bindEvent}} and \code{\link[shiny]{bindCache}} being used within a reactive
+#'
+#' @rdname repro_modules
 bindTabUI <- function(id) {
   ns <- NS(id)
 
@@ -15,6 +19,8 @@ bindTabUI <- function(id) {
   )
 }
 
+#' @rdname repro_modules
+#' @noRd
 bindTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
     summary_var <- reactive({

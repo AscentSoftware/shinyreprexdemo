@@ -13,6 +13,30 @@ This Shiny application provides a modular, tab-based interface for exploring dat
 used to generate them. It is designed to support reproducibility and transparency by showing both user-facing 
 results and the underlying module code.
 
+### Example Modules
+
+
+| Module ID              | Description |
+|------------------------|-------------|
+| `bindTabUI`            | Demonstrates the use of `bindEvent()` and `bindCache()` within a reactive expression to control execution and caching behavior. |
+| `ifelseTabUI`          | Shows how an `if/else` statement can be used inside a reactive to conditionally generate code and output, ensuring only relevant code is shown in the reproducible section. |
+| `inputTabUI`           | Illustrates how a Shiny input (e.g., `input$var`) can be used directly within a reactive expression. |
+| `multiLevelModuleUI`   | Demonstrates passing reactive expressions to a sub-module, where the actual rendering occurs in the parent module. |
+| `passedReactiveTabUI`  | Highlights how a reactive object defined in one module can be passed and used in another module. |
+| `reactiveTabUI`        | Shows how one reactive expression can be used as an input to another reactive, forming a reactive chain. |
+| `reactiveValTabUI`     | Demonstrates the use of a `reactiveVal()` inside a reactive expression. |
+| `reactiveValuesTabUI`  | Uses an element from a `reactiveValues()` object within a reactive expression, showing how to manage shared state. |
+
+Each module includes:
+- A brief description of the pattern being demonstrated.
+- Select inputs (if applicable) to modify the output.
+- A foldable code section showing the exact R code used.
+- A sidebar displaying the module’s implementation for reproducibility.
+
+---
+
+Would you like me to generate a table of contents or badges for the top of the README as well?
+
 ## Installation
 
 ### R Package

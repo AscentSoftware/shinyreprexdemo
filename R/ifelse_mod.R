@@ -1,3 +1,8 @@
+#' @details
+#' \code{ifelseTabUI} - An if/else statement included in a reactive, showing it only returns relevant code
+#' in the reproducing section
+#'
+#' @rdname repro_modules
 ifelseTabUI <- function(id) {
   ns <- NS(id)
 
@@ -15,6 +20,8 @@ ifelseTabUI <- function(id) {
   )
 }
 
+#' @rdname repro_modules
+#' @noRd
 ifelseTabServer <- function(id) {
   moduleServer(id, function(input, output, session) {
     is_numeric_var <- reactive(is.numeric(dtlg::adsl[[input$summary_var]]))
