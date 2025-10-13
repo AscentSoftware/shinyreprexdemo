@@ -33,10 +33,6 @@ Each module includes:
 - A foldable code section showing the exact R code used.
 - A sidebar displaying the module’s implementation for reproducibility.
 
----
-
-Would you like me to generate a table of contents or badges for the top of the README as well?
-
 ## Installation
 
 ### R Package
