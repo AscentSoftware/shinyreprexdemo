@@ -58,7 +58,7 @@ to access the internal {shinyrepro} repository.
 
 ```shell
 docker build --build-arg GITHUB_PAT=<YOUR_GITHUB_TOKEN> -t shinyreproapp .
-docker run -p 3838:3838 shinyreproapp
+docker run -p 8080:8080 shinyreproapp
 ```
 
-Then open your browser and go to: http://localhost:3838
+Then open your browser and go to: http://localhost:8080
