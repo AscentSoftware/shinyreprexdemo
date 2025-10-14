@@ -1,0 +1,35 @@
+name: Build and Deploy Shiny App
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+
+env:
+  AZURE_CONTAINER_REGISTRY: ${{ secrets.ACR_NAME }}
+  IMAGE_NAME: shinyapp
+  RESOURCE_GROUP: shinyapp-dev-rg
+  CONTAINER_APP_NAME: shinyapp-dev
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Build and deploy Container App
+        uses: azure/container-apps-deploy-action@v1
+        with:
+          appSourcePath: ${{ github.workspace }}
+          acrName: $AZURE_CONTAINER_REGISTRY
+          containerAppName: $CONTAINER_APP_NAME
+          resourceGroup: $RESOURCE_GROUP
+          imageToDeploy: myregistry.azurecr.io/app:${{ github.sha }}
