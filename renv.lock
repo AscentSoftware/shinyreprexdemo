@@ -146,12 +146,15 @@
     },
     "Rcpp": {
       "Package": "Rcpp",
-      "Version": "1.1.0",
+      "Version": "1.1.1",
       "Source": "Repository",
       "Title": "Seamless R and C++ Integration",
-      "Date": "2025-07-01",
+      "Date": "2026-01-07",
       "Authors@R": "c(person(\"Dirk\", \"Eddelbuettel\", role = c(\"aut\", \"cre\"), email = \"edd@debian.org\", comment = c(ORCID = \"0000-0001-6419-907X\")), person(\"Romain\", \"Francois\", role = \"aut\", comment = c(ORCID = \"0000-0002-2444-4226\")), person(\"JJ\", \"Allaire\", role = \"aut\", comment = c(ORCID = \"0000-0003-0174-9868\")), person(\"Kevin\", \"Ushey\", role = \"aut\", comment = c(ORCID = \"0000-0003-2880-7407\")), person(\"Qiang\", \"Kou\", role = \"aut\", comment = c(ORCID = \"0000-0001-6786-5453\")), person(\"Nathan\", \"Russell\", role = \"aut\"), person(\"Iñaki\", \"Ucar\", role = \"aut\", comment = c(ORCID = \"0000-0001-6403-5550\")), person(\"Doug\", \"Bates\", role = \"aut\", comment = c(ORCID = \"0000-0001-8316-9503\")), person(\"John\", \"Chambers\", role = \"aut\"))",
       "Description": "The 'Rcpp' package provides R functions as well as C++ classes which offer a seamless integration of R and C++. Many R data types and objects can be mapped back and forth to C++ equivalents which facilitates both writing of new code as well as easier integration of third-party libraries. Documentation about 'Rcpp' is provided by several vignettes included in this package, via the 'Rcpp Gallery' site at <https://gallery.rcpp.org>, the paper by Eddelbuettel and Francois (2011, <doi:10.18637/jss.v040.i08>), the book by Eddelbuettel (2013, <doi:10.1007/978-1-4614-6868-4>) and the paper by Eddelbuettel and Balamuta (2018, <doi:10.1080/00031305.2017.1375990>); see 'citation(\"Rcpp\")' for details.",
+      "Depends": [
+        "R (>= 3.5.0)"
+      ],
       "Imports": [
         "methods",
         "utils"
@@ -168,6 +171,7 @@
       "MailingList": "rcpp-devel@lists.r-forge.r-project.org",
       "RoxygenNote": "6.1.1",
       "Encoding": "UTF-8",
+      "VignetteBuilder": "Rcpp",
       "NeedsCompilation": "yes",
       "Author": "Dirk Eddelbuettel [aut, cre] (ORCID: <https://orcid.org/0000-0001-6419-907X>), Romain Francois [aut] (ORCID: <https://orcid.org/0000-0002-2444-4226>), JJ Allaire [aut] (ORCID: <https://orcid.org/0000-0003-0174-9868>), Kevin Ushey [aut] (ORCID: <https://orcid.org/0000-0003-2880-7407>), Qiang Kou [aut] (ORCID: <https://orcid.org/0000-0001-6786-5453>), Nathan Russell [aut], Iñaki Ucar [aut] (ORCID: <https://orcid.org/0000-0001-6403-5550>), Doug Bates [aut] (ORCID: <https://orcid.org/0000-0001-8316-9503>), John Chambers [aut]",
       "Maintainer": "Dirk Eddelbuettel <edd@debian.org>",
@@ -587,6 +591,66 @@
       "Maintainer": "Andrie de Vries <apdevries@gmail.com>",
       "Repository": "CRAN"
     },
+    "constructive": {
+      "Package": "constructive",
+      "Version": "1.3.0",
+      "Source": "Repository",
+      "Title": "Display Idiomatic Code to Construct Most R Objects",
+      "Authors@R": "c( person(\"Antoine\", \"Fabri\", , \"antoine.fabri@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Kirill\", \"Müller\", , \"kirill@cynkra.com\", role = \"ctb\", comment = c(ORCID = \"0000-0002-1416-3412\")), person(\"Jacob\", \"Scott\", , \"jscott2718@gmail.com\", role = \"ctb\"), person(\"cynkra GmbH\", , , \"mail@cynkra.com\", role = \"fnd\", comment = c(ROR = \"0335t7e62\")) )",
+      "Description": "Prints code that can be used to recreate R objects. In a sense it is similar to 'base::dput()' or 'base::deparse()' but 'constructive' strives to use idiomatic constructors.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://github.com/cynkra/constructive, https://cynkra.github.io/constructive/",
+      "BugReports": "https://github.com/cynkra/constructive/issues",
+      "Imports": [
+        "cli (>= 3.1.0)",
+        "diffobj",
+        "methods",
+        "rlang (>= 1.0.0)",
+        "waldo"
+      ],
+      "Suggests": [
+        "bit64",
+        "blob",
+        "clipr",
+        "data.table",
+        "DiagrammeR",
+        "DiagrammeRsvg",
+        "dm",
+        "dplyr",
+        "ellmer",
+        "forcats",
+        "ggplot2",
+        "jsonlite",
+        "knitr",
+        "lubridate",
+        "pixarfilms",
+        "R6",
+        "reprex",
+        "rmarkdown",
+        "roxygen2",
+        "rstudioapi",
+        "S7",
+        "scales",
+        "sf",
+        "testthat (>= 3.0.0)",
+        "tibble",
+        "tidyselect",
+        "vctrs",
+        "withr",
+        "xml2",
+        "xts",
+        "zoo"
+      ],
+      "VignetteBuilder": "knitr",
+      "Config/Needs/website": "cynkra/cynkratemplate",
+      "Config/testthat/edition": "3",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.3.9000",
+      "NeedsCompilation": "yes",
+      "Author": "Antoine Fabri [aut, cre], Kirill Müller [ctb] (ORCID: <https://orcid.org/0000-0002-1416-3412>), Jacob Scott [ctb], cynkra GmbH [fnd] (ROR: <https://ror.org/0335t7e62>)",
+      "Maintainer": "Antoine Fabri <antoine.fabri@gmail.com>",
+      "Repository": "CRAN"
+    },
     "cpp11": {
       "Package": "cpp11",
       "Version": "0.5.2",
@@ -984,10 +1048,10 @@
     },
     "dtlg": {
       "Package": "dtlg",
-      "Version": "0.0.2",
+      "Version": "0.0.3",
       "Source": "Repository",
       "Title": "A Performance-Focused Package for Clinical Trial Tables",
-      "Authors@R": "c( person( given = \"Max\", family = \"Ebenezer-Brown\", email = \"max.ebenezer-brown@ascent.io\", role = \"aut\" ), person( given = \"Max\", family = \"Norman\", email = \"max.norman@ascent.io\", role = \"aut\" ), person( given = \"Xinye\", family = \"Li\", email = \"xinye.li@ascent.io\", role = \"aut\" ), person( given = \"Anja\", family = \"Peebles-Brown\", email = \"anna.peebles-brown@ascent.io\", role = \"aut\" ), person( given = \"Ramiro\", family = \"Magno\", email = \"ramiro.morgado@ascent.io\", role = c(\"aut\", \"cre\") ) )",
+      "Authors@R": "c( person( given = \"Max\", family = \"Ebenezer-Brown\", email = \"max.ebenezer-brown@ascent.io\", role = \"aut\" ), person( given = \"Max\", family = \"Norman\", email = \"max.norman@ascent.io\", role = \"aut\" ), person( given = \"Xinye\", family = \"Li\", email = \"xinye.li@ascent.io\", role = \"aut\" ), person( given = \"Anja\", family = \"Peebles-Brown\", email = \"anna.peebles-brown@ascent.io\", role = \"aut\" ), person( given = \"Ashley\", family = \"Baldry\", email = \"ashley.baldry@ascent.io\", role = \"aut\" ),     person( given = \"Ramiro\", family = \"Magno\", email = \"ramiro.morgado@ascent.io\", role = c(\"aut\", \"cre\") ) )",
       "Description": "Create high-performance clinical reporting tables (TLGs) from ADaM-like inputs. The package provides a consistent, programmatic API to generate common tables such as demographics, adverse event incidence, and laboratory summaries, using 'data.table' for fast aggregation over large populations. Functions support flexible target-variable selection, stratification by treatment, and customizable summary statistics, and return tidy, machine-readable results ready to render with downstream table/formatting packages in analysis pipelines.",
       "License": "MIT + file LICENSE",
       "Imports": [
@@ -995,31 +1059,28 @@
         "vctrs"
       ],
       "Suggests": [
-        "dplyr",
-        "random.cdisc.data",
-        "rmarkdown",
-        "tern",
-        "kableExtra",
-        "testthat (>= 3.0.0)",
         "bench",
-        "tidyr",
+        "dplyr",
+        "kableExtra",
+        "rmarkdown",
+        "random.cdisc.data",
         "rtables",
-        "dtlg.data (>= 0.2.0)",
+        "tern",
+        "testthat (>= 3.0.0)",
+        "tidyr",
         "withr"
       ],
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2",
+      "RoxygenNote": "7.3.3",
       "Depends": [
         "R (>= 4.1.0)"
       ],
       "Config/testthat/edition": "3",
       "Config/Needs/website": "rmarkdown, ascentsoftware/ascentdown",
-      "Config/Needs/check": "ascentsoftware/dtlg.data",
       "LazyData": "true",
       "URL": "https://AscentSoftware.github.io/dtlg/",
-      "Additional_repositories": "https://ascentsoftware.r-universe.dev",
       "NeedsCompilation": "no",
-      "Author": "Max Ebenezer-Brown [aut], Max Norman [aut], Xinye Li [aut], Anja Peebles-Brown [aut], Ramiro Magno [aut, cre]",
+      "Author": "Max Ebenezer-Brown [aut], Max Norman [aut], Xinye Li [aut], Anja Peebles-Brown [aut], Ashley Baldry [aut], Ramiro Magno [aut, cre]",
       "Maintainer": "Ramiro Magno <ramiro.morgado@ascent.io>",
       "Repository": "CRAN"
     },
@@ -1216,7 +1277,7 @@
     },
     "gert": {
       "Package": "gert",
-      "Version": "2.2.0",
+      "Version": "2.3.1",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Simple Git Client for R",
@@ -1241,7 +1302,7 @@
       ],
       "VignetteBuilder": "knitr",
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2.9000",
+      "RoxygenNote": "7.3.3",
       "SystemRequirements": "libgit2 (>= 1.0): libgit2-devel (rpm) or libgit2-dev (deb)",
       "Language": "en-US",
       "NeedsCompilation": "yes",
@@ -1851,22 +1912,26 @@
     },
     "later": {
       "Package": "later",
-      "Version": "1.4.4",
+      "Version": "1.4.5",
       "Source": "Repository",
       "Type": "Package",
       "Title": "Utilities for Scheduling Functions to Execute Later with Event Loops",
-      "Authors@R": "c( person(\"Winston\", \"Chang\", , \"winston@posit.co\", role = \"aut\"), person(\"Joe\", \"Cheng\", , \"joe@posit.co\", role = \"aut\"), person(\"Charlie\", \"Gao\", , \"charlie.gao@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-0750-061X\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")), person(\"Marcus\", \"Geelnard\", role = c(\"ctb\", \"cph\"), comment = \"TinyCThread library, https://tinycthread.github.io/\"), person(\"Evan\", \"Nemerson\", role = c(\"ctb\", \"cph\"), comment = \"TinyCThread library, https://tinycthread.github.io/\") )",
+      "Authors@R": "c( person(\"Winston\", \"Chang\", , \"winston@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0002-1576-2126\")), person(\"Joe\", \"Cheng\", , \"joe@posit.co\", role = \"aut\"), person(\"Charlie\", \"Gao\", , \"charlie.gao@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-0750-061X\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")), person(\"Marcus\", \"Geelnard\", role = c(\"ctb\", \"cph\"), comment = \"TinyCThread library, https://tinycthread.github.io/\"), person(\"Evan\", \"Nemerson\", role = c(\"ctb\", \"cph\"), comment = \"TinyCThread library, https://tinycthread.github.io/\") )",
       "Description": "Executes arbitrary R or C functions some time after the current time, after the R execution stack has emptied. The functions are scheduled in an event loop.",
       "License": "MIT + file LICENSE",
       "URL": "https://later.r-lib.org, https://github.com/r-lib/later",
       "BugReports": "https://github.com/r-lib/later/issues",
+      "Depends": [
+        "R (>= 3.5)"
+      ],
       "Imports": [
-        "Rcpp (>= 0.12.9)",
+        "Rcpp (>= 1.0.10)",
         "rlang"
       ],
       "Suggests": [
         "knitr",
         "nanonext",
+        "promises",
         "rmarkdown",
         "testthat (>= 3.0.0)"
       ],
@@ -1874,19 +1939,20 @@
         "Rcpp"
       ],
       "VignetteBuilder": "knitr",
+      "Config/build/compilation-database": "true",
       "Config/Needs/website": "tidyverse/tidytemplate",
       "Config/testthat/edition": "3",
       "Config/usethis/last-upkeep": "2025-07-18",
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2",
+      "RoxygenNote": "7.3.3",
       "NeedsCompilation": "yes",
-      "Author": "Winston Chang [aut], Joe Cheng [aut], Charlie Gao [aut, cre] (ORCID: <https://orcid.org/0000-0002-0750-061X>), Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>), Marcus Geelnard [ctb, cph] (TinyCThread library, https://tinycthread.github.io/), Evan Nemerson [ctb, cph] (TinyCThread library, https://tinycthread.github.io/)",
+      "Author": "Winston Chang [aut] (ORCID: <https://orcid.org/0000-0002-1576-2126>), Joe Cheng [aut], Charlie Gao [aut, cre] (ORCID: <https://orcid.org/0000-0002-0750-061X>), Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>), Marcus Geelnard [ctb, cph] (TinyCThread library, https://tinycthread.github.io/), Evan Nemerson [ctb, cph] (TinyCThread library, https://tinycthread.github.io/)",
       "Maintainer": "Charlie Gao <charlie.gao@posit.co>",
       "Repository": "CRAN"
     },
     "lifecycle": {
       "Package": "lifecycle",
-      "Version": "1.0.4",
+      "Version": "1.0.5",
       "Source": "Repository",
       "Title": "Manage the Life Cycle of your Package Functions",
       "Authors@R": "c( person(\"Lionel\", \"Henry\", , \"lionel@posit.co\", role = c(\"aut\", \"cre\")), person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -1899,29 +1965,28 @@
       ],
       "Imports": [
         "cli (>= 3.4.0)",
-        "glue",
         "rlang (>= 1.1.0)"
       ],
       "Suggests": [
         "covr",
-        "crayon",
         "knitr",
-        "lintr",
+        "lintr (>= 3.1.0)",
         "rmarkdown",
         "testthat (>= 3.0.1)",
         "tibble",
         "tidyverse",
         "tools",
         "vctrs",
-        "withr"
+        "withr",
+        "xml2"
       ],
       "VignetteBuilder": "knitr",
       "Config/Needs/website": "tidyverse/tidytemplate, usethis",
       "Config/testthat/edition": "3",
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.2.1",
+      "RoxygenNote": "7.3.3",
       "NeedsCompilation": "no",
-      "Author": "Lionel Henry [aut, cre], Hadley Wickham [aut] (<https://orcid.org/0000-0003-4757-117X>), Posit Software, PBC [cph, fnd]",
+      "Author": "Lionel Henry [aut, cre], Hadley Wickham [aut] (ORCID: <https://orcid.org/0000-0003-4757-117X>), Posit Software, PBC [cph, fnd]",
       "Maintainer": "Lionel Henry <lionel@posit.co>",
       "Repository": "CRAN"
     },
@@ -2545,7 +2610,7 @@
     },
     "purrr": {
       "Package": "purrr",
-      "Version": "1.2.0",
+      "Version": "1.2.1",
       "Source": "Repository",
       "Title": "Functional Programming Tools",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Lionel\", \"Henry\", , \"lionel@posit.co\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"https://ror.org/03wc8by49\")) )",
@@ -2881,7 +2946,7 @@
     },
     "rlang": {
       "Package": "rlang",
-      "Version": "1.1.6",
+      "Version": "1.1.7",
       "Source": "Repository",
       "Title": "Functions for Base Types and Core R and 'Tidyverse' Features",
       "Description": "A toolbox for working with base types, core R features like the condition system, and core 'Tidyverse' features like tidy evaluation.",
@@ -2890,7 +2955,7 @@
       "ByteCompile": "true",
       "Biarch": "true",
       "Depends": [
-        "R (>= 3.5.0)"
+        "R (>= 4.0.0)"
       ],
       "Imports": [
         "utils"
@@ -2919,7 +2984,7 @@
         "winch"
       ],
       "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2",
+      "RoxygenNote": "7.3.3",
       "URL": "https://rlang.r-lib.org, https://github.com/r-lib/rlang",
       "BugReports": "https://github.com/r-lib/rlang/issues",
       "Config/build/compilation-database": "true",
@@ -3280,11 +3345,14 @@
       "Authors@R": "c(person(\"Ashley\", \"Baldry\", email = \"ashley.baldry@ascent.io\", role = c(\"aut\", \"cre\")))",
       "Description": "Provides functionality to extract reactive expressions from a 'Shiny' application and  convert them into stand-alone R scripts. This enables users to reproduce tables and visualisations  outside the interactive UI, facilitating integration into static reports or automated workflows  without requiring access to the original application source code.",
       "License": "MIT + file LICENSE",
+      "URL": "https://github.com/AscentSoftware/shinyrepro, https://jubilant-dollop-5lekoky.pages.github.io",
+      "BugReports": "https://github.com/AscentSoftware/shinyrepro/issues",
       "Depends": [
-        "R (>= 4.1.0)"
+        "R (>= 4.3.0)"
       ],
       "Imports": [
         "S7",
+        "constructive",
         "purrr",
         "rlang",
         "styler"
@@ -3293,21 +3361,24 @@
         "knitr",
         "rmarkdown",
         "shiny",
+        "spelling",
         "testthat (>= 3.0.0)"
       ],
       "Language": "en-GB",
       "Encoding": "UTF-8",
+      "Roxygen": "list(markdown = TRUE)",
       "RoxygenNote": "7.3.3",
       "Config/testthat/edition": "3",
       "Config/Needs/website": "ascentsoftware/ascentdown",
       "VignetteBuilder": "knitr",
+      "Collate": "'Repro_S7.R' 'S7_utils.R' 'repro_call_chunk.R' 'call_chunk_function.R' 'call_chunk_generic.R' 'call_chunk_if.R' 'call_chunk_null.R' 'call_chunk_reactive.R' 'call_chunk_reactval.R' 'call_chunk_shiny.R' 'call_chunk_subset.R' 'call_chunk_utils.R' 'repro_chunk.R' 'chunk_call.R' 'chunk_generic.R' 'chunk_reactive.R' 'package.R' 'repro.R'",
       "Author": "Ashley Baldry [aut, cre]",
       "Maintainer": "Ashley Baldry <ashley.baldry@ascent.io>",
       "RemoteType": "github",
       "RemoteUsername": "AscentSoftware",
       "RemoteRepo": "shinyrepro",
       "RemoteRef": "main",
-      "RemoteSha": "fe5c57857f051d49e7d906215063d05aae32e188",
+      "RemoteSha": "bb277ac5ed6bba11c4912ac3d96156430e720278",
       "RemoteHost": "api.github.com"
     },
     "sourcetools": {
@@ -3530,7 +3601,7 @@
     },
     "testthat": {
       "Package": "testthat",
-      "Version": "3.3.1",
+      "Version": "3.3.2",
       "Source": "Repository",
       "Title": "Unit Testing for R",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")), person(\"R Core team\", role = \"ctb\", comment = \"Implementation of utils::recover()\") )",
@@ -3568,6 +3639,8 @@
         "digest (>= 0.6.33)",
         "gh",
         "knitr",
+        "otel",
+        "otelsdk",
         "rmarkdown",
         "rstudioapi",
         "S7",
@@ -3634,10 +3707,10 @@
     },
     "tibble": {
       "Package": "tibble",
-      "Version": "3.3.0",
+      "Version": "3.3.1",
       "Source": "Repository",
       "Title": "Simple Data Frames",
-      "Authors@R": "c(person(given = \"Kirill\", family = \"M\\u00fcller\", role = c(\"aut\", \"cre\"), email = \"kirill@cynkra.com\", comment = c(ORCID = \"0000-0002-1416-3412\")), person(given = \"Hadley\", family = \"Wickham\", role = \"aut\", email = \"hadley@rstudio.com\"), person(given = \"Romain\", family = \"Francois\", role = \"ctb\", email = \"romain@r-enthusiasts.com\"), person(given = \"Jennifer\", family = \"Bryan\", role = \"ctb\", email = \"jenny@rstudio.com\"), person(given = \"RStudio\", role = c(\"cph\", \"fnd\")))",
+      "Authors@R": "c( person(\"Kirill\", \"Müller\", , \"kirill@cynkra.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-1416-3412\")), person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", role = \"aut\"), person(\"Romain\", \"Francois\", , \"romain@r-enthusiasts.com\", role = \"ctb\"), person(\"Jennifer\", \"Bryan\", , \"jenny@rstudio.com\", role = \"ctb\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "Provides a 'tbl_df' class (the 'tibble') with stricter checking and better formatting than the traditional data frame.",
       "License": "MIT + file LICENSE",
       "URL": "https://tibble.tidyverse.org/, https://github.com/tidyverse/tibble",
@@ -3682,17 +3755,18 @@
         "withr"
       ],
       "VignetteBuilder": "knitr",
-      "Encoding": "UTF-8",
-      "RoxygenNote": "7.3.2.9000",
+      "Config/autostyle/rmd": "false",
+      "Config/autostyle/scope": "line_breaks",
+      "Config/autostyle/strict": "true",
+      "Config/Needs/website": "tidyverse/tidytemplate",
       "Config/testthat/edition": "3",
       "Config/testthat/parallel": "true",
       "Config/testthat/start-first": "vignette-formats, as_tibble, add, invariants",
-      "Config/autostyle/scope": "line_breaks",
-      "Config/autostyle/strict": "true",
-      "Config/autostyle/rmd": "false",
-      "Config/Needs/website": "tidyverse/tidytemplate",
+      "Config/usethis/last-upkeep": "2025-06-07",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.3.9000",
       "NeedsCompilation": "yes",
-      "Author": "Kirill Müller [aut, cre] (ORCID: <https://orcid.org/0000-0002-1416-3412>), Hadley Wickham [aut], Romain Francois [ctb], Jennifer Bryan [ctb], RStudio [cph, fnd]",
+      "Author": "Kirill Müller [aut, cre] (ORCID: <https://orcid.org/0000-0002-1416-3412>), Hadley Wickham [aut], Romain Francois [ctb], Jennifer Bryan [ctb], Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Kirill Müller <kirill@cynkra.com>",
       "Repository": "CRAN"
     },
