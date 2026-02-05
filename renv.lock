@@ -3389,7 +3389,7 @@
       "RemoteUsername": "AscentSoftware",
       "RemoteRepo": "shinyreprex",
       "RemoteRef": "main",
-      "RemoteSha": "374c18510164dc1b2d65a4e09aac856398d48ee7"
+      "RemoteSha": "4054f36088e4eef29d40f2cae6bb5532bdb1184f"
     },
     "sourcetools": {
       "Package": "sourcetools",
