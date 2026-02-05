@@ -6,7 +6,7 @@
 
 ## Overview
 
-This Shiny application is a demonstration of how the [shinyrepro](https://github.com/AscentSoftware/shinyrepro) package
+This Shiny application is a demonstration of how the [shinyreprex](https://github.com/AscentSoftware/shinyreprex) package
 can work within an application.
 
 This Shiny application provides a modular, tab-based interface for exploring data outputs alongside the code 

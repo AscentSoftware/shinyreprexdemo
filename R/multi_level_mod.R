@@ -65,7 +65,7 @@ multiLevelModuleServer <- function(id) {
     )
 
     output$code <- highlighter::renderHighlighter({
-      highlighter::highlighter(shinyrepro::repro(tbl))
+      highlighter::highlighter(shinyreprex::reprex_reactive(tbl))
     })
     output$table <- reactable::renderReactable(tbl())
   })

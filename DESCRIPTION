@@ -16,13 +16,13 @@ Imports:
     purrr,
     reactable,
     shiny,
-    shinyrepro,
+    shinyreprex,
     styler
 Suggests:
     devtools,
     testthat (>= 3.0.0)
 Remotes:
-    AscentSoftware/shinyrepro
+    AscentSoftware/shinyreprex
 Encoding: UTF-8
 RoxygenNote: 7.3.3
 Config/testthat/edition: 3

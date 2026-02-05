@@ -51,7 +51,7 @@ ifelseTabServer <- function(id) {
     })
 
     output$code <- highlighter::renderHighlighter({
-      highlighter::highlighter(shinyrepro::repro(table_code))
+      highlighter::highlighter(shinyreprex::reprex_reactive(table_code))
     })
 
     output$table <- reactable::renderReactable(table_code())
