@@ -1,9 +1,9 @@
-Package: shinyreproapp
-Title: An Amazing Shiny App
+Package: shinyreprexdemo
+Title: Shiny Application Demoing 'shinyreprex'
 Version: 0.0.0.9000
 Authors@R: 
-    person("Ashley", "Baldry", , "ashley.baldry@ascent.io", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+    person("Ashley", "Baldry", , "ashley.baldry@acuityanalytics.com", role = c("aut", "cre"))
+Description: A shinylive application that shows example scenarios of using shinyreprex.
 License: MIT + file LICENSE
 Depends:
     R (>= 4.1.0)
@@ -21,7 +21,6 @@ Imports:
 Suggests:
     devtools,
     testthat (>= 3.0.0)
-Remotes:
     AscentSoftware/shinyreprex
 Encoding: UTF-8
 RoxygenNote: 7.3.3

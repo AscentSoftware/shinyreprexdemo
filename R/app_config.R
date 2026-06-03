@@ -9,5 +9,5 @@
 #'
 #' @noRd
 app_sys <- function(...) {
-  system.file(..., package = "shinyreproapp")
+  system.file(..., package = "shinyreprexdemo")
 }

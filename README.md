@@ -1,7 +1,7 @@
 # Shiny Reproduction Example Application
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/AscentSoftware/shinyreproapp/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AscentSoftware/shinyreproapp/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/AscentSoftware/shinyreprexdemo/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/AscentSoftware/shinyreprexdemo/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 ## Overview
@@ -41,24 +41,24 @@ To get the latest version of the application, run the below code:
 
 ```r
 install.packages("remotes")
-remotes::install_github("AscentSoftware/shinyreproapp")
+remotes::install_github("AscentSoftware/shinyreprexdemo")
 ```
 
 To run the app locally:
 
 ```r
-library(shinyreproapp)
+library(shinyreprexdemo)
 run_app()
 ```
 
 ### Docker
 
 You can run this Shiny app using Docker for a consistent, dependency-free environment. A GitHub PAT is required
-to access the internal {shinyrepro} repository.
+to access the internal {shinyreprex} repository.
 
 ```shell
-docker build --build-arg GITHUB_PAT=<YOUR_GITHUB_TOKEN> -t shinyreproapp .
-docker run -p 8080:8080 shinyreproapp
+docker build --build-arg GITHUB_PAT=<YOUR_GITHUB_TOKEN> -t shinyreprexdemo .
+docker run -p 8080:8080 shinyreprexdemo
 ```
 
 Then open your browser and go to: http://localhost:8080

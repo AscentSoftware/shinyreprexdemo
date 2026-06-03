@@ -33,4 +33,4 @@ COPY . ./app/
 RUN R -e "remotes::install_local('./app', upgrade = 'never')"
 
 EXPOSE 2222 8080
-CMD ["R", "-e", "options(shiny.port = 8080, shiny.host = '0.0.0.0'); library(shinyreproapp); shinyreproapp::run_app()"]
+CMD ["R", "-e", "options(shiny.port = 8080, shiny.host = '0.0.0.0'); library(shinyreprexdemo); shinyreprexdemo::run_app()"]

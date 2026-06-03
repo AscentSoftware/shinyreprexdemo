@@ -10,11 +10,11 @@ app_ui <- function(request) {
   tagList(
     add_external_resources(),
     bslib::page_fluid(
-      title = "Shiny Repro Explorer",
+      title = "Shiny Reprex Explorer",
       class = "min-vh-100 bg-body p-4 p-lg-5",
       div(
         class = "mb-3 mb-lg-3",
-        h1("Shiny Repro Explorer"),
+        h1("Shiny Reprex Explorer"),
         tags$p(
           class = "text-muted",
           "Interactive demonstration of modular Shiny application design patterns.",
@@ -47,7 +47,7 @@ add_external_resources <- function() {
   tags$head(
     golem::bundle_resources(
       path = app_sys("app/www"),
-      app_title = "Shiny Repro Example"
+      app_title = "Shiny Reprex Example"
     ),
     tags$link(rel = "shortcut icon", href = "www/favicon.ico")
   )
