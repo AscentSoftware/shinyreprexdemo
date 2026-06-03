@@ -20,7 +20,8 @@ Imports:
     styler
 Suggests:
     devtools,
-    testthat (>= 3.0.0),
+    testthat (>= 3.0.0)
+Remotes:
     AscentSoftware/shinyreprex
 Encoding: UTF-8
 RoxygenNote: 7.3.3
