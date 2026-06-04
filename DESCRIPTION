@@ -22,7 +22,8 @@ Suggests:
     devtools,
     testthat (>= 3.0.0)
 Remotes:
-    AscentSoftware/shinyreprex
+    AscentSoftware/dtlg@v0.0.2,
+    AscentSoftware/shinyreprex@v0.1.0
 Encoding: UTF-8
 RoxygenNote: 7.3.3
 Config/testthat/edition: 3
