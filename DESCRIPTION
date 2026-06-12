@@ -20,10 +20,8 @@ Imports:
     styler
 Suggests:
     devtools,
+    shinylive,
     testthat (>= 3.0.0)
-Remotes:
-    AscentSoftware/dtlg@v0.1.1,
-    AscentSoftware/shinyreprex@v0.1.0
 Encoding: UTF-8
 RoxygenNote: 7.3.3
 Config/testthat/edition: 3
