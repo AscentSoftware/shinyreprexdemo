@@ -41,7 +41,7 @@ bindTabServer <- function(id) {
         defaultColDef = reactable::colDef(html = TRUE)
       )
     }) |>
-      bindCache(summary_var()) |>
+      bindCache(summary_var(), cache = "session") |>
       bindEvent(summary_var())
 
     output$code <- highlighter::renderHighlighter({
