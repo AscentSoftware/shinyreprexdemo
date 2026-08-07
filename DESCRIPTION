@@ -19,7 +19,7 @@ Imports:
     shinyreprex,
     styler
 Suggests:
-    devtools,
+    pkgload,
     shinylive,
     testthat (>= 3.0.0)
 Encoding: UTF-8
