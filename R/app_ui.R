@@ -30,6 +30,13 @@ app_ui <- function(request) {
         bslib::nav_panel("Passed Reactive", passedReactiveTabUI("passed_reactive")),
         bslib::nav_panel("If/Else", ifelseTabUI("ifelse")),
         bslib::nav_panel("Multi Level", multiLevelModuleUI("multi_module")),
+        bslib::nav_spacer(),
+        bslib::nav_menu(
+          "Options",
+          icon = shiny::icon("cog"),
+          lockfileUI("lockfile"),
+          align = "right"
+        )
       )
     )
   )
