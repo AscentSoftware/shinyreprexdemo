@@ -4,6 +4,8 @@
 #'
 #' @noRd
 app_server <- function(input, output, session) {
+  lockfileServer("lockfile")
+
   react_adsl <- reactiveTabServer("reactive")
 
   inputTabServer("input")
