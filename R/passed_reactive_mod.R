@@ -33,7 +33,7 @@ passedReactiveTabServer <- function(id, adsl) {
       )
     })
 
-    shinyreprex::register_reactives(table_code)
+    if (packageVersion("shinyreprex") >= "0.3.0") shinyreprex::register_reactives(table_code)
 
     output$code <- highlighter::renderHighlighter({
       highlighter::highlighter(shinyreprex::reprex_reactive(table_code))

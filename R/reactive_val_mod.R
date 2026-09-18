@@ -45,7 +45,7 @@ reactiveValTabServer <- function(id) {
       )
     })
 
-    shinyreprex::register_reactives(table_code)
+    if (packageVersion("shinyreprex") >= "0.3.0") shinyreprex::register_reactives(table_code)
 
     output$code <- highlighter::renderHighlighter({
       validate(need(length(summary_vars()) > 0L, "No summary variable(s) have been selected"))
