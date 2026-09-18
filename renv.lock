@@ -1945,7 +1945,7 @@
     "shinyreprex": {
       "Package": "shinyreprex",
       "Version": "0.3.0",
-      "Source": "GitHub",
+      "Source": "Repository",
       "Type": "Package",
       "Title": "Reproducible Code for 'Shiny' Objects",
       "Authors@R": "c(person(\"Ashley\", \"Baldry\", email = \"ashley.baldry@acuityanalytics.com\", role = c(\"aut\", \"cre\")))",
@@ -1979,16 +1979,11 @@
       "Config/testthat/edition": "3",
       "Encoding": "UTF-8",
       "Language": "en-GB",
-      "Roxygen": "list(markdown = TRUE)",
       "Collate": "'Repro_S7.R' 'S7_utils.R' 'repro_call_chunk.R' 'call_chunk_function.R' 'call_chunk_generic.R' 'call_chunk_if.R' 'call_chunk_null.R' 'call_chunk_reactive.R' 'call_chunk_reactval.R' 'call_chunk_shiny.R' 'call_chunk_subset.R' 'call_chunk_switch.R' 'call_chunk_utils.R' 'repro_chunk.R' 'chunk_call.R' 'chunk_generic.R' 'chunk_reactive.R' 'package.R' 'reactive_expression.R' 'register_reactives.R' 'reprex_lockfile.R' 'reprex_reactive.R' 'walk_packages.R'",
+      "NeedsCompilation": "no",
       "Author": "Ashley Baldry [aut, cre]",
       "Maintainer": "Ashley Baldry <ashley.baldry@acuityanalytics.com>",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteUsername": "AscentSoftware",
-      "RemoteRepo": "shinyreprex",
-      "RemoteRef": "main",
-      "RemoteSha": "33831a1369583c1df7367ea111a65879bf6a1e5f"
+      "Repository": "CRAN"
     },
     "sourcetools": {
       "Package": "sourcetools",
